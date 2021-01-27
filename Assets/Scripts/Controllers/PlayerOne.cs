@@ -38,7 +38,7 @@ public class PlayerOne : MonoBehaviour
         }
 
         rigidbody.position = rigidbody.position + moveVector * movementScaler;
-        movementScaler = movementScaler + .01f;
+        //movementScaler = movementScaler + .01f;
         moveVector = moveVector * .5f;
         
     }
