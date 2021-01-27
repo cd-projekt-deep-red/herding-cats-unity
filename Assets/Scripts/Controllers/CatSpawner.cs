@@ -8,6 +8,7 @@ public class CatSpawner : MonoBehaviour
 
     [SerializeField] private GameObject catPrefab;
     [SerializeField] private GameObject catWrapper;
+
     
 
  
