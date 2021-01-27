@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8127649562877688436}
   - component: {fileID: 8127649562877688437}
   - component: {fileID: 8127649562877688441}
+  - component: {fileID: 5071671414782279198}
   m_Layer: 0
   m_Name: PlayerOne
   m_TagString: Untagged
@@ -145,3 +146,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 8127649562877688439}
   rigidbody: {fileID: 8127649562877688436}
+--- !u!95 &5071671414782279198
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8127649562877688434}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a65d3df9f59d4b8a9d8b9b66909949b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
