@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerOne : PlayerController
+public class PlayerOne : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Rigidbody2D rigidbody;
+
+
+    private Vector2 moveVector = new Vector2 { x = 0f, y = 0f };
+    [Range(0f, 1f)] private float movementScaler = .1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -11,25 +17,29 @@ public class PlayerOne : PlayerController
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Vector2 framePlayerMove = new Vector2 { x = 0, y = 0 };
+        
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            framePlayerMove.x++;
+            moveVector.x++;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            framePlayerMove.x--;
+            moveVector.x--;
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            framePlayerMove.y++;
+            moveVector.y++;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            framePlayerMove.y--;
+            moveVector.y--;
         }
-        moveBy(framePlayerMove);
+
+        rigidbody.position = rigidbody.position + moveVector * movementScaler;
+        movementScaler = movementScaler + .01f;
+        moveVector = moveVector * .5f;
+        
     }
 }
