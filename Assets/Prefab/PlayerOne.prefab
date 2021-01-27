@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 8127649562877688439}
   rigidbody: {fileID: 8127649562877688436}
+  bigChungusAnimator: {fileID: 5071671414782279198}
 --- !u!95 &5071671414782279198
 Animator:
   serializedVersion: 3

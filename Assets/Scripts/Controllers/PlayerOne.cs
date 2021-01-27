@@ -6,7 +6,7 @@ public class PlayerOne : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Rigidbody2D rigidbody;
-
+    [SerializeField] private Animator bigChungusAnimator;
 
     private Vector2 moveVector = new Vector2 { x = 0f, y = 0f };
     [Range(0f, 1f)] private float movementScaler = .1f;
@@ -39,7 +39,9 @@ public class PlayerOne : MonoBehaviour
 
         rigidbody.position = rigidbody.position + moveVector * movementScaler;
         //movementScaler = movementScaler + .01f;
-        moveVector = moveVector * .5f;
+        moveVector = moveVector * .05f;
+        bigChungusAnimator.SetFloat("Speed",  moveVector.magnitude);
+        Debug.Log(moveVector.magnitude.ToString());
         
     }
 }
