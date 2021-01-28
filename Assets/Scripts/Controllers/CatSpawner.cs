@@ -22,7 +22,7 @@ public class CatSpawner : MonoBehaviour
     {
        
         boundsCollider = boundsColliderObject.GetComponent<EdgeCollider2D>();
-        SpawnCatsRandom(4);
+        SpawnCatsRandom(10);
 
     }
 
