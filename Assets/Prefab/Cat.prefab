@@ -12,12 +12,9 @@ GameObject:
   - component: {fileID: 5565994771745818802}
   - component: {fileID: 5565994771745818803}
   - component: {fileID: 5565994771745818800}
-  - component: {fileID: 6509331579698538469}
-<<<<<<< HEAD
-  - component: {fileID: 7865541442135030461}
-=======
   - component: {fileID: -4659898581776455554}
->>>>>>> 19fce998a49d8034927d2eaa3b41ad103961af64
+  - component: {fileID: 6509331579698538469}
+  - component: {fileID: 1676161681045776430}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -57,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 47053855334774b1fbed4e567a73eb7a, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,15 +75,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 09420055ba3ce4d4e903c0ae39dc46df, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.4545455, y: 0.8636364}
+  m_Size: {x: 0.8181818, y: 0.6363636}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5565994771745818803
@@ -122,50 +119,14 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6509331579698538469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5565994771745818801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2856dec06c4134b47906cea38e615cfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  breedData: {fileID: 0}
-  spriteRenderer: {fileID: 5565994771745818802}
-  breedName: 
---- !u!95 &7865541442135030461
-Animator:
-  serializedVersion: 3
-=======
-  breedData: {fileID: 11400000, guid: 3dd83181faa464e3ca116fd863a4cdef, type: 2}
-  spriteRenderer: {fileID: 5565994771745818802}
-  breedName: Burmese
 --- !u!61 &-4659898581776455554
 BoxCollider2D:
->>>>>>> 19fce998a49d8034927d2eaa3b41ad103961af64
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5565994771745818801}
   m_Enabled: 1
-<<<<<<< HEAD
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2a513ca378c194cc096e524c0e52d8a7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
-=======
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -184,4 +145,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8181818, y: 0.6363636}
   m_EdgeRadius: 0
->>>>>>> 19fce998a49d8034927d2eaa3b41ad103961af64
+--- !u!114 &6509331579698538469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565994771745818801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2856dec06c4134b47906cea38e615cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breedData: {fileID: 0}
+  spriteRenderer: {fileID: 5565994771745818802}
+  animator: {fileID: 1676161681045776430}
+  breedName: 
+--- !u!95 &1676161681045776430
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565994771745818801}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -7,6 +7,8 @@ public class CatSpawner : MonoBehaviour
 {
     public CatBreed[] breedArray;
 
+    [SerializeField] private Sprite bellyCat;
+
     [SerializeField] private GameObject catPrefab;
     [SerializeField] private GameObject catWrapper;
     [SerializeField] private GameObject boundsColliderObject;
@@ -51,8 +53,16 @@ public class CatSpawner : MonoBehaviour
             cat.transform.localPosition = new Vector3 { x = x, y = y, z = 0f };
             // Set the breed of the cat to a random breed from the breed dictionary
             CatStyle catStyle = catPrefab.GetComponent<CatStyle>();
-            catStyle.breedData = breedArray[(int)Random.Range(0f, breedArray.Length-1)];
-            
+
+            // TEMPORARY CODE TO LIMIT BREEDS TO BELLYCAT
+            CatBreed breedInfo = breedArray[(int)Random.Range(0f, breedArray.Length-1)];
+            while(breedInfo.variantSprite != bellyCat)
+            {
+              breedInfo = breedArray[(int)Random.Range(0f, breedArray.Length-1)];
+            }
+
+            catStyle.breedData = breedInfo;
+
         }
     }
 }

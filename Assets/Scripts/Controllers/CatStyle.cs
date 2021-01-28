@@ -11,15 +11,9 @@ public class CatStyle : MonoBehaviour
     [SerializeField]private string breedName;
     private bool breedSet = false;
 
-    void Update()
-    {
-   
-    }
-
     private void OnBecameVisible()
     {
         setBreed();
-        
     }
 
     // Set the breed variables

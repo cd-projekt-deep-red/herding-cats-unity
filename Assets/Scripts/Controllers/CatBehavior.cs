@@ -49,4 +49,5 @@ public enum CatBehaviorState
 {
     Moving,
     Sitting,
+    Standing
 }
