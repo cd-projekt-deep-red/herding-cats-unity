@@ -8,6 +8,8 @@ public class PlayerOne : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator characterAnimator;
 
+    public float playerSpeed = 0f;
+
     private float maxMovement = .1f;
 
     private Vector2 moveVector = new Vector2 { x = 0f, y = 0f };
@@ -15,13 +17,13 @@ public class PlayerOne : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+
         if (Input.GetKey(KeyCode.RightArrow) && moveVector.x < maxMovement)
         {
             moveVector.x = moveVector.x + movementScaler;
@@ -43,7 +45,7 @@ public class PlayerOne : MonoBehaviour
         {
             moveVector.y = moveVector.y - movementScaler;
         }
-        
+
         rigidbody.position = rigidbody.position + moveVector;
         moveVector = moveVector * .75f;
 
@@ -60,7 +62,10 @@ public class PlayerOne : MonoBehaviour
             characterAnimator.SetBool("MoveRight",false);
             characterAnimator.SetBool("MoveLeft", false);
         }
-        
+
+        // Update the players speed
+        playerSpeed = moveVector.magnitude; 
+
     }
 
 
