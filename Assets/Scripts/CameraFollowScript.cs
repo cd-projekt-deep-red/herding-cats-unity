@@ -21,7 +21,7 @@ public class CameraFollowScript : MonoBehaviour
 
         // Zoom the camera based on the player speed
         float desiredZoom = cameraZoom + (playerScript.playerSpeed * zoomScale);
-        float smoothedZoom = Mathf.Lerp(mainCamera.orthographicSize, desiredZoom, smoothSpeed / 4f);
+        float smoothedZoom = Mathf.Lerp(mainCamera.orthographicSize, desiredZoom, smoothSpeed / 6f);
         mainCamera.orthographicSize = smoothedZoom;
     }
 }
