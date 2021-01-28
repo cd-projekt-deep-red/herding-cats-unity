@@ -146,7 +146,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 8127649562877688439}
   rigidbody: {fileID: 8127649562877688436}
-  characterAnimator: {fileID: 0}
+  characterAnimator: {fileID: 5071671414782279198}
+  leftFootLocation: {x: -0.04, y: -0.65, z: 0}
+  rightFootLocation: {x: -0.3, y: -0.65, z: 0}
+  footprintPrefab: {fileID: 8572123635186947104, guid: 3c5379f102d6b445fb26806fed100a71,
+    type: 3}
   playerSpeed: 0
 --- !u!95 &5071671414782279198
 Animator:
