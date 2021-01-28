@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3916643449047622837}
   - component: {fileID: 7953745945949940026}
   m_Layer: 10
-  m_Name: CatPickUpCollisionDetector
+  m_Name: InteractionDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,6 +212,7 @@ MonoBehaviour:
   rightFootLocation: {x: -0.3, y: -0.65, z: 0}
   footprintPrefab: {fileID: 8572123635186947104, guid: 3c5379f102d6b445fb26806fed100a71,
     type: 3}
+  playerHorzDirection: 0
   playerSpeed: 0
 --- !u!95 &5071671414782279198
 Animator:

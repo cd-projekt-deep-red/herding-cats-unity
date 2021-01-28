@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CatPickUpCollisionDetector : MonoBehaviour
+public class InteractionDetector : MonoBehaviour
 {
     private IList<Interactable> interactables = new List<Interactable>();
     private Interactable closestInteractable = null;
