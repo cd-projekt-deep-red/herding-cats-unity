@@ -254,7 +254,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1077982997
 GameObject:
@@ -285,9 +285,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766363cf94f50aa4a949c4c31d9a9b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  catPrefab: {fileID: 8127649562877688434, guid: a1a73f0c32bbe954fad9529ca52a37ac,
+  catPrefab: {fileID: 5565994771745818801, guid: c1f4e4ec67475e449bc415366b74ff00,
     type: 3}
   catWrapper: {fileID: 1223384213}
+  boundsColliderObject: {fileID: 980868830}
 --- !u!4 &1077982999
 Transform:
   m_ObjectHideFlags: 0
@@ -332,6 +333,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1373397361 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5071671414782279198, guid: a1a73f0c32bbe954fad9529ca52a37ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 1713374030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1713374030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -399,5 +406,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8127649562877688441, guid: a1a73f0c32bbe954fad9529ca52a37ac,
+        type: 3}
+      propertyPath: characterAnimator
+      value: 
+      objectReference: {fileID: 1373397361}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a73f0c32bbe954fad9529ca52a37ac, type: 3}

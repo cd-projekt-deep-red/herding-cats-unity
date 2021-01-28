@@ -8,8 +8,12 @@ public class CatSpawner : MonoBehaviour
 
     [SerializeField] private GameObject catPrefab;
     [SerializeField] private GameObject catWrapper;
-
+    [SerializeField] private GameObject boundsColliderObject;
     
+    
+     private EdgeCollider2D boundsCollider;
+
+     
 
  
 
@@ -17,6 +21,9 @@ public class CatSpawner : MonoBehaviour
     void Start()
     {
         SpawnCatsRandom();
+        boundsCollider = boundsColliderObject.GetComponent<EdgeCollider2D>();
+
+        Debug.Log(boundsCollider.bounds.ToString());
         
 
     }

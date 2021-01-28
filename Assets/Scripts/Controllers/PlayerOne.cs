@@ -49,15 +49,16 @@ public class PlayerOne : MonoBehaviour
 
         if(moveVector.magnitude > .1 && moveVector.x > 0)
         {
-            characterAnimator.SetTrigger("MoveRight");
+            characterAnimator.SetBool("MoveRight", true);
         }
         if(moveVector.magnitude > .1 && moveVector.x < 0)
         {
-            characterAnimator.SetTrigger("MoveLeft");
+            characterAnimator.SetBool("MoveLeft", true);
         }
         if(moveVector.magnitude < .1)
         {
-            characterAnimator.SetTrigger("Idle");
+            characterAnimator.SetBool("MoveRight",false);
+            characterAnimator.SetBool("MoveLeft", false);
         }
         
     }
