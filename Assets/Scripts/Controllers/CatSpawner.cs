@@ -20,10 +20,8 @@ public class CatSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnCatsRandom();
+        SpawnCatsRandom(4);
         boundsCollider = boundsColliderObject.GetComponent<EdgeCollider2D>();
-
-        Debug.Log(boundsCollider.bounds.ToString());
         
 
     }
@@ -35,12 +33,18 @@ public class CatSpawner : MonoBehaviour
     }
 
 
-    private void SpawnCatsRandom()
+    private void SpawnCatsRandom(int howManyCats)
     {
-        GameObject cat = Instantiate(catPrefab, new Vector3 { x = 0f, y = 0f, z = 0f }, Quaternion.identity);
-        cat.transform.SetParent(catWrapper.transform, false);
-        //place cat at random point
+        for (int i = 0; i < howManyCats; i++)
+        {
+            float x = Random.Range(-1 * boundsCollider.bounds.extents.x, boundsCollider.bounds.extents.x);
+            float y = Random.Range(-1 * boundsCollider.bounds.extents.y, boundsCollider.bounds.extents.y);
 
-        // can add code here to spawn different types of cats
+            GameObject cat = Instantiate(catPrefab, new Vector3 { x = 0f, y = 0f, z = 0f }, Quaternion.identity);
+            cat.transform.SetParent(catWrapper.transform, false);
+            //place cat at random point
+            cat.transform.localPosition = new Vector3 { x = x, y = y, z = 0f };
+            // can add code here to spawn different types of cats
+        }
     }
 }
