@@ -10,7 +10,7 @@ Material:
   m_Name: PatchCatMat
   m_Shader: {fileID: -6465566751694194690, guid: 385c41ff285c043d692565a630d969c2,
     type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -71,12 +71,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_0: {r: 1, g: 0, b: 0, a: 1}
-    - Color_100: {r: 1, g: 0, b: 0, a: 1}
-    - Color_20: {r: 1, g: 0, b: 0, a: 1}
-    - Color_40: {r: 1, g: 0, b: 0, a: 1}
-    - Color_60: {r: 1, g: 0, b: 0, a: 1}
-    - Color_80: {r: 1, g: 0, b: 0, a: 1}
+    - Color_0: {r: 0.19607843, g: 0, b: 0.06666667, a: 1}
+    - Color_100: {r: 0.9254902, g: 0.9098039, b: 0.7607843, a: 1}
+    - Color_20: {r: 0.37254903, g: 0.22745098, b: 0.3764706, a: 1}
+    - Color_40: {r: 0.7647059, g: 0.21960784, b: 0.27450982, a: 1}
+    - Color_60: {r: 0.5294118, g: 0.4, b: 0.44705883, a: 1}
+    - Color_80: {r: 0.7176471, g: 0.6392157, b: 0.6156863, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 142292902}
   - component: {fileID: 142292901}
   - component: {fileID: 142292900}
+  - component: {fileID: 142292903}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -204,6 +205,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &142292903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142292899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &980868830
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +317,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766363cf94f50aa4a949c4c31d9a9b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  breedArray:
+  - {fileID: 11400000, guid: 2c9de20121f4d475a808e86dba966e07, type: 2}
+  - {fileID: 11400000, guid: 46b161cde5ff044d1b522972cc3c6cdf, type: 2}
+  - {fileID: 11400000, guid: 7db8d6385dae94ebb9935328b83d9eac, type: 2}
+  - {fileID: 11400000, guid: c8c0cd5a721814be6aa00773657cf407, type: 2}
+  - {fileID: 11400000, guid: a36906cf7b3e34c63b71cc683deb7953, type: 2}
+  - {fileID: 11400000, guid: 3dd83181faa464e3ca116fd863a4cdef, type: 2}
+  - {fileID: 11400000, guid: dc742e18557954f2b9024c5bec56ea12, type: 2}
+  - {fileID: 11400000, guid: f93aa4a63ce484588b8c3367ce689e7a, type: 2}
+  - {fileID: 11400000, guid: 1339be53bc95a48c2b746333d0ee470c, type: 2}
+  - {fileID: 11400000, guid: 4aa0c7168334b46009766811f98d7b67, type: 2}
+  - {fileID: 11400000, guid: 5bf4d8466c1dc4332887d35118e3aac3, type: 2}
+  - {fileID: 11400000, guid: a01627049df6840d09673c50e6c2d8d9, type: 2}
+  - {fileID: 11400000, guid: 638fe99a86f734fc4b49d29a61e84f08, type: 2}
+  - {fileID: 11400000, guid: 2c5f7e8a990bb45e0be95e6da9f6a7e9, type: 2}
+  - {fileID: 11400000, guid: bba51ba2d7ff248f0b28e1eb23a43281, type: 2}
+  - {fileID: 11400000, guid: f12a3694e66814b288f61ba4838ba9de, type: 2}
+  - {fileID: 11400000, guid: 15c6cab115ef8469d9dc2dc1fec38697, type: 2}
+  - {fileID: 11400000, guid: 2fbb181e66ed44adf876436e1498c4e8, type: 2}
   catPrefab: {fileID: 5565994771745818801, guid: c1f4e4ec67475e449bc415366b74ff00,
     type: 3}
   catWrapper: {fileID: 1223384213}

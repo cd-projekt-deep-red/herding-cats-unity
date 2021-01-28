@@ -5,25 +5,29 @@ using UnityEngine;
 public class CatSpawner : MonoBehaviour
 
 {
+    public CatBreed[] breedArray;
 
     [SerializeField] private GameObject catPrefab;
     [SerializeField] private GameObject catWrapper;
     [SerializeField] private GameObject boundsColliderObject;
-
-
-     private EdgeCollider2D boundsCollider;
-
-
-
+    private Dictionary<string,CatBreed> breeds = new Dictionary<string, CatBreed>();
+    private EdgeCollider2D boundsCollider;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
         boundsCollider = boundsColliderObject.GetComponent<EdgeCollider2D>();
         SpawnCatsRandom(200);
 
+        // Add breeds to breed dictionary
+        for(int i=0; i < breedArray.Length; i++)
+        {
+          if(breedArray[i] != null)
+          {
+            breeds.Add(breedArray[i].name, breedArray[i]);
+          }
+        }
     }
 
     // Update is called once per frame
@@ -45,7 +49,9 @@ public class CatSpawner : MonoBehaviour
             cat.transform.SetParent(catWrapper.transform, false);
             //place cat at random point
             cat.transform.localPosition = new Vector3 { x = x, y = y, z = 0f };
-            // can add code here to spawn different types of cats
+            // Set the breed of the cat to a random breed from the breed dictionary
+            CatStyle catStyle = catPrefab.GetComponent<CatStyle>();
+            catStyle.breedData = breedArray[(int)Random.Range(0f, breedArray.Length-1)];
         }
     }
 }
