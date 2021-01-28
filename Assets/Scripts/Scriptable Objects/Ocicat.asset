@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4e5284bc9224d27bed228b6b5c82f7, type: 3}
+  m_Name: Ocicat
+  m_EditorClassIdentifier: 
+  name: Ocicat
+  variantSprite: {fileID: 21300000, guid: 1bd7af6146ad94d819887e5d2b507028, type: 3}
+  variantMaterial: {fileID: 2100000, guid: 0a7a5b4d1395341fa81e7f77f8bbd631, type: 2}
+  colors:
+  - serializedVersion: 2
+    rgba: 4284496479
+  - serializedVersion: 2
+    rgba: 4284496479
+  - serializedVersion: 2
+    rgba: 4285687431
+  - serializedVersion: 2
+    rgba: 4284189927
+  - serializedVersion: 2
+    rgba: 4285963463
+  - serializedVersion: 2
+    rgba: 4287807464
