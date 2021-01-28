@@ -66,7 +66,7 @@ public class PlayerOne : MonoBehaviour
         }
 
         // Update the players speed
-        playerSpeed = moveVector.magnitude; 
+        playerSpeed = moveVector.magnitude;
 
     }
 
