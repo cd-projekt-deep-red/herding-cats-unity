@@ -47,8 +47,10 @@ public class PlayerOne : MonoBehaviour
         }
 
         rigidbody.position = rigidbody.position + moveVector;
-        moveVector = moveVector * .75f;
-
+        if (!Input.anyKey)
+        {
+            moveVector = moveVector * .75f;
+        }
         if(moveVector.magnitude > .07 && moveVector.x > 0)
         {
             characterAnimator.SetBool("MoveRight", true);
