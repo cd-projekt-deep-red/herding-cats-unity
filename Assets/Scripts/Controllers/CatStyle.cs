@@ -21,7 +21,7 @@ public class CatStyle : MonoBehaviour
     }
 
     // Set the breed variables
-    public void setBreed()
+    private void setBreed()
     {
       // For Bugfixing:
       breedName = breedData.name;
