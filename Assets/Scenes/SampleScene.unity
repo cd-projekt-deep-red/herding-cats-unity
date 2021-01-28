@@ -162,7 +162,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 983737368}
   smoothSpeed: 0.125
+  cameraZoom: 5
   offset: {x: 0, y: 0, z: -1}
+  playerScript: {fileID: 983737364}
+  mainCamera: {fileID: 519420031}
+  zoomScale: 12
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -297,6 +301,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &983737364 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8127649562877688441, guid: a1a73f0c32bbe954fad9529ca52a37ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 1639147104}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a0776ed918533d4cb7170ac0982a459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &983737368 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8127649562877688438, guid: a1a73f0c32bbe954fad9529ca52a37ac,
