@@ -12,16 +12,17 @@ public class CatStyle : MonoBehaviour
 
     void Update()
     {
-      // If the breed is not yet set, set it
-      if(!breedSet)
-      {
+   
+    }
+
+    private void OnBecameVisible()
+    {
         setBreed();
-        breedSet = true;
-      }
+        
     }
 
     // Set the breed variables
-    private void setBreed()
+    public void setBreed()
     {
       // For Bugfixing:
       breedName = breedData.name;

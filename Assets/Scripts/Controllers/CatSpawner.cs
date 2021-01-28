@@ -18,7 +18,7 @@ public class CatSpawner : MonoBehaviour
     void Start()
     {
         boundsCollider = boundsColliderObject.GetComponent<EdgeCollider2D>();
-        SpawnCatsRandom(200);
+        SpawnCatsRandom(100);
 
         // Add breeds to breed dictionary
         for(int i=0; i < breedArray.Length; i++)
@@ -52,6 +52,7 @@ public class CatSpawner : MonoBehaviour
             // Set the breed of the cat to a random breed from the breed dictionary
             CatStyle catStyle = catPrefab.GetComponent<CatStyle>();
             catStyle.breedData = breedArray[(int)Random.Range(0f, breedArray.Length-1)];
+            
         }
     }
 }
