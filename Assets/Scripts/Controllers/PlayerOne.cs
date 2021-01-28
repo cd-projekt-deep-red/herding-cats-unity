@@ -24,52 +24,59 @@ public class PlayerOne : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (Input.GetKey(KeyCode.RightArrow) && moveVector.x < maxMovement)
-        {
-            moveVector.x = moveVector.x + movementScaler;
-
-            if(moveVector.x > 2)
-            {
-                Debug.Log("Warpspeed");
-            }
-        }
-        if (Input.GetKey(KeyCode.LeftArrow) && -1*moveVector.x < maxMovement)
-        {
-            moveVector.x = moveVector.x - movementScaler;
-        }
-        if (Input.GetKey(KeyCode.UpArrow) && moveVector.y < maxMovement)
-        {
-            moveVector.y = moveVector.y + movementScaler;
-        }
-        if (Input.GetKey(KeyCode.DownArrow) && -1*moveVector.y < maxMovement)
-        {
-            moveVector.y = moveVector.y - movementScaler;
-        }
+        //if (Input.GetKey(KeyCode.RightArrow) && moveVector.x < maxMovement)
+        //{
+        //    moveVector.x = moveVector.x + movementScaler;
+        //}
+        //if (Input.GetKey(KeyCode.LeftArrow) && -1*moveVector.x < maxMovement)
+        //{
+        //    moveVector.x = moveVector.x - movementScaler;
+        //}
+        //if (Input.GetKey(KeyCode.UpArrow) && moveVector.y < maxMovement)
+        //{
+        //    moveVector.y = moveVector.y + movementScaler;
+        //}
+        //if (Input.GetKey(KeyCode.DownArrow) && -1*moveVector.y < maxMovement)
+        //{
+        //    moveVector.y = moveVector.y - movementScaler;
+        //}
 
         rigidbody.position = rigidbody.position + moveVector;
-        if (!Input.anyKey)
-        {
-            moveVector = moveVector * .75f;
-        }
-        if(moveVector.magnitude > .07 && moveVector.x > 0)
-        {
-            characterAnimator.SetBool("MoveRight", true);
-            characterAnimator.SetBool("MoveLeft", false);
-        }
-        if(moveVector.magnitude > .07 && moveVector.x < 0)
-        {
-            characterAnimator.SetBool("MoveLeft", true);
-            characterAnimator.SetBool("MoveRight", false);
-        }
-        if(moveVector.magnitude < .07 )
-        {
-            characterAnimator.SetBool("MoveRight",false);
-            characterAnimator.SetBool("MoveLeft", false);
-        }
+        //if (!Input.anyKey)
+        //{
+        //    moveVector = moveVector * .75f;
+        //}
+        //if(moveVector.magnitude > .07 && moveVector.x > 0)
+        //{
+        //    characterAnimator.SetBool("MoveRight", true);
+        //    characterAnimator.SetBool("MoveLeft", false);
+        //}
+        //if(moveVector.magnitude > .07 && moveVector.x < 0)
+        //{
+        //    characterAnimator.SetBool("MoveLeft", true);
+        //    characterAnimator.SetBool("MoveRight", false);
+        //}
+        //if(moveVector.magnitude < .07 )
+        //{
+        //    characterAnimator.SetBool("MoveRight",false);
+        //    characterAnimator.SetBool("MoveLeft", false);
+        //}
 
-        // Update the players speed
-        playerSpeed = moveVector.magnitude;
+        //// Update the players speed
+        //playerSpeed = moveVector.magnitude;
 
+        //Store the current horizontal input in the float moveHorizontal.
+        float moveHorizontal = Input.GetAxis("Horizontal");
+
+        //Store the current vertical input in the float moveVertical.
+        float moveVertical = Input.GetAxis("Vertical");
+
+        //Use the two store floats to create a new Vector2 variable movement.
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        print(movement);
+
+        //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
+        rigidbody.AddForce(movement * 10);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
