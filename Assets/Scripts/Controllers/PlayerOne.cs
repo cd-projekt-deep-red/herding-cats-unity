@@ -6,10 +6,12 @@ public class PlayerOne : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Rigidbody2D rigidbody;
-    [SerializeField] private Animator bigChungusAnimator;
+    [SerializeField] private Animator characterAnimator;
+
+    private float maxMovement = .1f;
 
     private Vector2 moveVector = new Vector2 { x = 0f, y = 0f };
-    [Range(0f, 1f)] private float movementScaler = .1f;
+    [Range(0f, 1f)] private float movementScaler = .05f;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,28 +22,48 @@ public class PlayerOne : MonoBehaviour
     void FixedUpdate()
     {
         
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) && moveVector.x < maxMovement)
         {
-            moveVector.x++;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            moveVector.x--;
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            moveVector.y++;
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            moveVector.y--;
-        }
+            moveVector.x = moveVector.x + movementScaler;
 
-        rigidbody.position = rigidbody.position + moveVector * movementScaler;
-        //movementScaler = movementScaler + .01f;
-        moveVector = moveVector * .05f;
-        bigChungusAnimator.SetFloat("Speed",  moveVector.magnitude);
-        Debug.Log(moveVector.magnitude.ToString());
+            if(moveVector.x > 2)
+            {
+                Debug.Log("Warpspeed");
+            }
+        }
+        if (Input.GetKey(KeyCode.LeftArrow) && -1*moveVector.x < maxMovement)
+        {
+            moveVector.x = moveVector.x - movementScaler;
+        }
+        if (Input.GetKey(KeyCode.UpArrow) && moveVector.y < maxMovement)
+        {
+            moveVector.y = moveVector.y + movementScaler;
+        }
+        if (Input.GetKey(KeyCode.DownArrow) && -1*moveVector.y < maxMovement)
+        {
+            moveVector.y = moveVector.y - movementScaler;
+        }
+        
+        rigidbody.position = rigidbody.position + moveVector;
+        moveVector = moveVector * .75f;
+
+        if(moveVector.magnitude > .1 && moveVector.x > 0)
+        {
+            characterAnimator.SetTrigger("MoveRight");
+        }
+        if(moveVector.magnitude > .1 && moveVector.x < 0)
+        {
+            characterAnimator.SetTrigger("MoveLeft");
+        }
+        if(moveVector.magnitude < .1)
+        {
+            characterAnimator.SetTrigger("Idle");
+        }
         
     }
+
+
+
+
+
 }
