@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2856dec06c4134b47906cea38e615cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breedData: {fileID: 0}
+  breedData: {fileID: 11400000, guid: f12a3694e66814b288f61ba4838ba9de, type: 2}
   spriteRenderer: {fileID: 5565994771745818802}
   animator: {fileID: 1676161681045776430}
   breedName: 
