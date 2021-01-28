@@ -49,15 +49,17 @@ public class PlayerOne : MonoBehaviour
         rigidbody.position = rigidbody.position + moveVector;
         moveVector = moveVector * .75f;
 
-        if(moveVector.magnitude > .1 && moveVector.x > 0)
+        if(moveVector.magnitude > .07 && moveVector.x > 0)
         {
             characterAnimator.SetBool("MoveRight", true);
+            characterAnimator.SetBool("MoveLeft", false);
         }
-        if(moveVector.magnitude > .1 && moveVector.x < 0)
+        if(moveVector.magnitude > .07 && moveVector.x < 0)
         {
             characterAnimator.SetBool("MoveLeft", true);
+            characterAnimator.SetBool("MoveRight", false);
         }
-        if(moveVector.magnitude < .1)
+        if(moveVector.magnitude < .07 )
         {
             characterAnimator.SetBool("MoveRight",false);
             characterAnimator.SetBool("MoveLeft", false);
