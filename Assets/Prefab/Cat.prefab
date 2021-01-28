@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: cf1cd4328b26644a48c609679334f68d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,21 +119,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6509331579698538469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5565994771745818801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2856dec06c4134b47906cea38e615cfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  breedData: {fileID: 11400000, guid: 1339be53bc95a48c2b746333d0ee470c, type: 2}
-  spriteRenderer: {fileID: 5565994771745818802}
-  breedName: Burmese
 --- !u!61 &-4659898581776455554
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,7 +171,7 @@ Animator:
   m_GameObject: {fileID: 5565994771745818801}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a513ca378c194cc096e524c0e52d8a7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
