@@ -4,6 +4,7 @@ using UnityEngine;
 public class CatBreed : ScriptableObject
 {
     public string name;
+    public RuntimeAnimatorController variantAnimationController;
     public Sprite variantSprite;
     public Material variantMaterial;
     public Color32[] colors;

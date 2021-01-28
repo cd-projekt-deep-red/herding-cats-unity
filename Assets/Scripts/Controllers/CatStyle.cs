@@ -7,6 +7,7 @@ public class CatStyle : MonoBehaviour
     public CatBreed breedData;
 
     [SerializeField]private SpriteRenderer spriteRenderer;
+    [SerializeField]private Animator animator;
     [SerializeField]private string breedName;
     private bool breedSet = false;
 
@@ -31,6 +32,8 @@ public class CatStyle : MonoBehaviour
 
       // Set the material of the breed
       spriteRenderer.material = breedData.variantMaterial;
+
+      animator.runtimeAnimatorController = breedData.variantAnimationController;
 
       // Set the colors of the material
       for(int i=0;  i < breedData.colors.Length; i++)
