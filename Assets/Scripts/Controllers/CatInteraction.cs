@@ -4,7 +4,7 @@ public class CatInteraction : Holdable
 {
     private Animator animator;
     private CatBehavior catBehavior;
-    private Rigidbody2D rigidbody2D;
+    private new Rigidbody2D rigidbody2D;
 
     private void Start()
     {

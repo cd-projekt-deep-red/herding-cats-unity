@@ -3,7 +3,7 @@
 public class PlayerOne : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private new Rigidbody2D rigidbody;
     [SerializeField] private Animator characterAnimator;
     [SerializeField] private Vector3 leftFootLocation;
     [SerializeField] private Vector3 rightFootLocation;

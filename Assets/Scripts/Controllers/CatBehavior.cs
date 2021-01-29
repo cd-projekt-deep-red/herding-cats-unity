@@ -9,6 +9,7 @@ public class CatBehavior : MonoBehaviour
     private Animator animator;
     private CatBehaviorState state = CatBehaviorState.Sitting;
     private Vector2 destination;
+    private Vector2 antiDestination;
 
     void Start()
     {
@@ -29,6 +30,16 @@ public class CatBehavior : MonoBehaviour
                 this.state = CatBehaviorState.Sitting;
             }
         }
+
+        if (this.state == CatBehaviorState.PathAway)
+        {
+            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2) this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * 5);
+            this.rigidBody.MovePosition(newPosition);
+            if (((Vector2) this.transform.position - this.antiDestination).magnitude > 10)
+            {
+                StartCoroutine("CycleState");
+            }
+        }
     }
 
     private void LateUpdate()
@@ -36,6 +47,7 @@ public class CatBehavior : MonoBehaviour
         switch (this.state)
         {
             case CatBehaviorState.Moving:
+            case CatBehaviorState.PathAway:
                 if (this.rigidBody.velocity.x > 0)
                 {
                     this.animator.SetBool("MoveRight", true);
@@ -77,6 +89,14 @@ public class CatBehavior : MonoBehaviour
             }
             this.state = newState;
         }
+
+    }
+
+    public void OnPlayerDetected(GameObject player)
+    {
+        StopCoroutine("CycleState");
+        this.state = CatBehaviorState.PathAway;
+        this.antiDestination = player.transform.position;
     }
 }
 
@@ -84,5 +104,6 @@ public enum CatBehaviorState
 {
     Moving,
     Sitting,
-    Standing
+    Standing,
+    PathAway
 }
