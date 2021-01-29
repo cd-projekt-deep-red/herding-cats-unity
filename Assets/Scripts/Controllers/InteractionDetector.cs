@@ -27,13 +27,11 @@ public class InteractionDetector : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         this.interactables.Add(collision.gameObject.GetComponent<Interactable>());
-        //CalculateClosestInteractable();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         this.interactables.Remove(collision.gameObject.GetComponent<Interactable>());
-        //CalculateClosestInteractable();
     }
 
     private void CalculateClosestInteractable()
