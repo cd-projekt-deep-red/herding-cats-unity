@@ -10,7 +10,8 @@ public abstract class Interactable : MonoBehaviour
     {
         if (!this.isHighlighted)
         {
-            this.transform.localScale = this.transform.localScale * 1.2f;
+            this.GetComponent<SpriteRenderer>().material.SetFloat("_OutlineThickness", 1f);
+            // this.transform.localScale = this.transform.localScale * 1.2f;
             this.isHighlighted = true;
         }
     }
@@ -19,7 +20,8 @@ public abstract class Interactable : MonoBehaviour
     {
         if (this.isHighlighted)
         {
-            this.transform.localScale = this.transform.localScale / 1.2f;
+            this.GetComponent<SpriteRenderer>().material.SetFloat("_OutlineThickness", 0f);
+            // this.transform.localScale = this.transform.localScale / 1.2f;
             this.isHighlighted = false;
         }
     }
