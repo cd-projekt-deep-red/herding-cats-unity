@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -81,8 +82,10 @@ public class CatBehavior : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(1f, 5f));
-            Array values = Enum.GetValues(typeof(CatBehaviorState));
-            CatBehaviorState newState = (CatBehaviorState) values.GetValue(Random.Range(0, values.Length));
+            System.Collections.Generic.IEnumerable<CatBehaviorState> values = Enum.GetValues(typeof(CatBehaviorState))
+                .Cast<CatBehaviorState>()
+                .Where(s => s != CatBehaviorState.PathAway);
+            CatBehaviorState newState = (CatBehaviorState) values.ElementAt(Random.Range(0, values.Count()));
             if (newState == CatBehaviorState.Moving)
             {
                 this.destination = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f));

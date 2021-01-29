@@ -9,6 +9,7 @@ public class PlayerOne : MonoBehaviour
     [SerializeField] private Vector3 rightFootLocation;
     [SerializeField] private GameObject footprintPrefab;
     [SerializeField] private HorzMovementDirection playerHorzDirection;
+    [Range(-1, 1)] private float lastPlayerMovement;
 
     [SerializeField] private GoalUI GoalUIScript;
     [SerializeField] private GameObject goalGO;
@@ -32,7 +33,7 @@ public class PlayerOne : MonoBehaviour
         rigidbody.AddForce(movement);
 
         // If player is near goal display hero goal UI
-        GoalUIScript.ToggleGoalDisplay(Vector3.Distance(this.gameObject.transform.position, goalGO.transform.position) <= 4.5f);
+        //GoalUIScript.ToggleGoalDisplay(Vector3.Distance(this.gameObject.transform.position, goalGO.transform.position) <= 4.5f);
     }
 
     private void LateUpdate()
@@ -40,21 +41,26 @@ public class PlayerOne : MonoBehaviour
         playerSpeed = rigidbody.velocity.magnitude;
         if (playerSpeed > 2 && rigidbody.velocity.x > 0)
         {
-            characterAnimator.SetBool("MoveRight - OLD", true);
-            characterAnimator.SetBool("MoveLeft - OLD", false);
+            characterAnimator.SetBool("Moving", true);
+            characterAnimator.SetFloat("DirX", rigidbody.velocity.x);
             playerHorzDirection = HorzMovementDirection.East;
         }
         if (playerSpeed > 2 && rigidbody.velocity.x < 0)
         {
-            characterAnimator.SetBool("MoveLeft - OLD", true);
-            characterAnimator.SetBool("MoveRight - OLD", false);
+            characterAnimator.SetBool("Moving", true);
+            characterAnimator.SetFloat("DirX", rigidbody.velocity.x);
             playerHorzDirection = HorzMovementDirection.West;
         }
         if (playerSpeed < 2)
         {
             // Player has slowed enough to stop moving
-            characterAnimator.SetBool("MoveRight - OLD", false);
-            characterAnimator.SetBool("MoveLeft - OLD", false);
+            characterAnimator.SetBool("Moving", false);
+            if(playerSpeed > 1)
+            {
+                lastPlayerMovement = rigidbody.velocity.x;
+                characterAnimator.SetFloat("Last DirX", lastPlayerMovement);
+            }
+            
             playerHorzDirection = HorzMovementDirection.None;
         }
     }
