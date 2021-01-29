@@ -611,6 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2349617caa45c4365ab8b6fc8f1cdf3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goalUI: {fileID: 273930836}
 --- !u!95 &273930836
 Animator:
   serializedVersion: 3
@@ -20595,6 +20596,16 @@ PrefabInstance:
       propertyPath: characterAnimator
       value: 
       objectReference: {fileID: 606679366}
+    - target: {fileID: 8127649562877688441, guid: a1a73f0c32bbe954fad9529ca52a37ac,
+        type: 3}
+      propertyPath: GoalUIScript
+      value: 
+      objectReference: {fileID: 273930835}
+    - target: {fileID: 8127649562877688441, guid: a1a73f0c32bbe954fad9529ca52a37ac,
+        type: 3}
+      propertyPath: goalGO
+      value: 
+      objectReference: {fileID: 267252263}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a73f0c32bbe954fad9529ca52a37ac, type: 3}
 --- !u!1 &1662947676

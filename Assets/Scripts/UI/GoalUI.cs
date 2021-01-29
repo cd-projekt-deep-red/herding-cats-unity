@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class GoalUI : MonoBehaviour
 {
+    [SerializeField]private Animator goalUI;
 
-
-    // Hero the Goal for a set amount of time
-    public void HeroGoal(float duration)
+    // Change display state of the goal
+    public void ToggleGoalDisplay(bool isLarge)
     {
-      //
-    }
-
-    // Minimize the Goal
-    public void MinimizeGoal()
-    {
-      //
+      goalUI.SetBool("NearGoal", isLarge);
     }
 }

@@ -3,13 +3,15 @@
 public class PlayerOne : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private new Rigidbody2D rigidbody;
+    [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator characterAnimator;
     [SerializeField] private Vector3 leftFootLocation;
     [SerializeField] private Vector3 rightFootLocation;
     [SerializeField] private GameObject footprintPrefab;
     [SerializeField] private HorzMovementDirection playerHorzDirection;
-    [Range(-1, 1)] private float lastPlayerMovment;
+
+    [SerializeField] private GoalUI GoalUIScript;
+    [SerializeField] private GameObject goalGO;
 
     public Holdable heldObject;
     public float playerSpeed = 0f;
@@ -28,6 +30,9 @@ public class PlayerOne : MonoBehaviour
 
         //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
         rigidbody.AddForce(movement);
+
+        // If player is near goal display hero goal UI
+        GoalUIScript.ToggleGoalDisplay(Vector3.Distance(this.gameObject.transform.position, goalGO.transform.position) <= 4.5f);
     }
 
     private void LateUpdate()
@@ -35,32 +40,28 @@ public class PlayerOne : MonoBehaviour
         playerSpeed = rigidbody.velocity.magnitude;
         if (playerSpeed > 2 && rigidbody.velocity.x > 0)
         {
-            characterAnimator.SetBool("Moving", true);
-            characterAnimator.SetFloat("DirX", rigidbody.velocity.x);
+            characterAnimator.SetBool("MoveRight - OLD", true);
+            characterAnimator.SetBool("MoveLeft - OLD", false);
             playerHorzDirection = HorzMovementDirection.East;
         }
         if (playerSpeed > 2 && rigidbody.velocity.x < 0)
         {
-            characterAnimator.SetBool("Moving", true);
-            characterAnimator.SetFloat("DirX", rigidbody.velocity.x);
+            characterAnimator.SetBool("MoveLeft - OLD", true);
+            characterAnimator.SetBool("MoveRight - OLD", false);
             playerHorzDirection = HorzMovementDirection.West;
         }
         if (playerSpeed < 2)
         {
-            characterAnimator.SetBool("Moving", false);
-            if(playerSpeed > 1)
-            {
-                lastPlayerMovment = rigidbody.velocity.x;
-                characterAnimator.SetFloat("Last DirX", lastPlayerMovment);
-            }
-            
+            // Player has slowed enough to stop moving
+            characterAnimator.SetBool("MoveRight - OLD", false);
+            characterAnimator.SetBool("MoveLeft - OLD", false);
             playerHorzDirection = HorzMovementDirection.None;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+
     }
 
     public void SpawnFootprint(int foot)
