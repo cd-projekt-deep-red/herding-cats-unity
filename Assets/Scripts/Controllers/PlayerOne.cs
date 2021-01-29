@@ -54,7 +54,7 @@ public class PlayerOne : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("walking Over physics object");
+        
     }
 
     public void SpawnFootprint(int foot)
