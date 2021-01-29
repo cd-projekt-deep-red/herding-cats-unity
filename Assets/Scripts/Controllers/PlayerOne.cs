@@ -9,6 +9,7 @@ public class PlayerOne : MonoBehaviour
     [SerializeField] private Vector3 rightFootLocation;
     [SerializeField] private GameObject footprintPrefab;
     [SerializeField] private HorzMovementDirection playerHorzDirection;
+    [Range(-1, 1)] private float lastPlayerMovment;
 
     public Holdable heldObject;
     public float playerSpeed = 0f;
@@ -34,20 +35,25 @@ public class PlayerOne : MonoBehaviour
         playerSpeed = rigidbody.velocity.magnitude;
         if (playerSpeed > 2 && rigidbody.velocity.x > 0)
         {
-            characterAnimator.SetBool("MoveRight", true);
-            characterAnimator.SetBool("MoveLeft", false);
+            characterAnimator.SetBool("Moving", true);
+            characterAnimator.SetFloat("DirX", rigidbody.velocity.x);
             playerHorzDirection = HorzMovementDirection.East;
         }
         if (playerSpeed > 2 && rigidbody.velocity.x < 0)
         {
-            characterAnimator.SetBool("MoveLeft", true);
-            characterAnimator.SetBool("MoveRight", false);
+            characterAnimator.SetBool("Moving", true);
+            characterAnimator.SetFloat("DirX", rigidbody.velocity.x);
             playerHorzDirection = HorzMovementDirection.West;
         }
         if (playerSpeed < 2)
         {
-            characterAnimator.SetBool("MoveRight", false);
-            characterAnimator.SetBool("MoveLeft", false);
+            characterAnimator.SetBool("Moving", false);
+            if(playerSpeed > 1)
+            {
+                lastPlayerMovment = rigidbody.velocity.x;
+                characterAnimator.SetFloat("Last DirX", lastPlayerMovment);
+            }
+            
             playerHorzDirection = HorzMovementDirection.None;
         }
     }

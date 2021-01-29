@@ -63,6 +63,7 @@ public class CatSpawner : MonoBehaviour
               breedInfo = breedArray[(int)Random.Range(0f, breedArray.Length-1)];
             }
 
+            
             catStyle.breedData = breedInfo;
 
         }

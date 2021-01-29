@@ -8,4 +8,7 @@ public class CatBreed : ScriptableObject
     public Sprite variantSprite;
     public Material variantMaterial;
     public Color32[] colors;
+
+    //cat breed behaviour multipliers
+    public float breedFondnessMult = 1;
 }
