@@ -18,7 +18,7 @@ TagManager:
   - InteractionDetector
   - TerainDetector
   - GoalDetector
-  - 
+  - CatPlayerDetector
   - 
   - 
   - 
