@@ -32,7 +32,7 @@ public class PlayerOne : MonoBehaviour
         rigidbody.AddForce(movement);
 
         // If player is near goal display hero goal UI
-        GoalUIScript.ToggleGoalDisplay(Vector3.Distance(this.gameObject.transform.position, goalGO.transform.position) <= 4.5f);
+        //GoalUIScript.ToggleGoalDisplay(Vector3.Distance(this.gameObject.transform.position, goalGO.transform.position) <= 4.5f);
     }
 
     private void LateUpdate()
