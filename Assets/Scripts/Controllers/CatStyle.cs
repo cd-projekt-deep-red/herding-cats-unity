@@ -28,6 +28,8 @@ public class CatStyle : MonoBehaviour
       // Set the material of the breed
       spriteRenderer.material = breedData.variantMaterial;
 
+      spriteRenderer.material.SetFloat("_OutlineThickness", 0f);
+
       animator.runtimeAnimatorController = breedData.variantAnimationController;
 
       // Set the colors of the material
