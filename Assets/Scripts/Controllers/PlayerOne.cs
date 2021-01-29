@@ -102,7 +102,7 @@ public class PlayerOne : MonoBehaviour
 
     public void PutDownHeldObject()
     {
-        this.heldObject.transform.localPosition = Vector3.zero;
+        this.heldObject.transform.localPosition = Vector3.up * -0.25f;
         this.heldObject.transform.SetParent(null);
         this.heldObject = null;
     }

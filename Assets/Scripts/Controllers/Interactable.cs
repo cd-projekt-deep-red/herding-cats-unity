@@ -6,12 +6,12 @@ public abstract class Interactable : MonoBehaviour
 
     public abstract void Interact(PlayerOne player);
     public abstract bool IsInteractable(PlayerOne player);
+
     public void Highlight()
     {
         if (!this.isHighlighted)
         {
-            this.GetComponent<SpriteRenderer>().material.SetFloat("_OutlineThickness", 1f);
-            // this.transform.localScale = this.transform.localScale * 1.2f;
+            GetComponent<SpriteRenderer>().material.SetFloat("_OutlineThickness", 1f);
             this.isHighlighted = true;
         }
     }
@@ -20,8 +20,7 @@ public abstract class Interactable : MonoBehaviour
     {
         if (this.isHighlighted)
         {
-            this.GetComponent<SpriteRenderer>().material.SetFloat("_OutlineThickness", 0f);
-            // this.transform.localScale = this.transform.localScale / 1.2f;
+            GetComponent<SpriteRenderer>().material.SetFloat("_OutlineThickness", 0f);
             this.isHighlighted = false;
         }
     }
