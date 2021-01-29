@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Devon Rex
   m_EditorClassIdentifier: 
   name: Devon Rex
+  variantAnimationController: {fileID: 0}
   variantSprite: {fileID: 21300000, guid: 37a40e523e0bf4bc78f431b791ee15be, type: 3}
   variantMaterial: {fileID: 2100000, guid: 2929e9901bc0b4deebe9e1905cab1732, type: 2}
   colors:
@@ -28,3 +29,5 @@ MonoBehaviour:
     rgba: 4288521143
   - serializedVersion: 2
     rgba: 4290963692
+  breedFondnessMult: 1
+  breedSellValue: 5

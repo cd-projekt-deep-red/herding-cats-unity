@@ -11,4 +11,5 @@ public class CatBreed : ScriptableObject
 
     //cat breed behaviour multipliers
     public float breedFondnessMult = 1;
+    public float breedSellValue = 5.0f;
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Burmese
   m_EditorClassIdentifier: 
   name: Burmese
+  variantAnimationController: {fileID: 0}
   variantSprite: {fileID: 21300000, guid: 09420055ba3ce4d4e903c0ae39dc46df, type: 3}
   variantMaterial: {fileID: 2100000, guid: 47053855334774b1fbed4e567a73eb7a, type: 2}
   colors:
@@ -28,3 +29,5 @@ MonoBehaviour:
     rgba: 4286547357
   - serializedVersion: 2
     rgba: 4285963463
+  breedFondnessMult: 1
+  breedSellValue: 5

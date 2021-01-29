@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: European Burmese
   m_EditorClassIdentifier: 
   name: European Burmese
+  variantAnimationController: {fileID: 0}
   variantSprite: {fileID: 21300000, guid: 6be1d54c02c384302a3cbfa622525d19, type: 3}
   variantMaterial: {fileID: 2100000, guid: 0d28abc596d15478ba057d78c4dc70b3, type: 2}
   colors:
@@ -28,3 +29,5 @@ MonoBehaviour:
     rgba: 4285963463
   - serializedVersion: 2
     rgba: 4287807464
+  breedFondnessMult: 1
+  breedSellValue: 5

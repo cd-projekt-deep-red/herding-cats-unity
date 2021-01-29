@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Persian
   m_EditorClassIdentifier: 
   name: Persian
+  variantAnimationController: {fileID: 0}
   variantSprite: {fileID: 21300000, guid: 58c636e16799b40ba95fa099f6c9cf55, type: 3}
   variantMaterial: {fileID: 2100000, guid: 26b1821adde8d4fda92c3aa9d34b0e70, type: 2}
   colors:
@@ -28,3 +29,5 @@ MonoBehaviour:
     rgba: 4288521143
   - serializedVersion: 2
     rgba: 4290963692
+  breedFondnessMult: 1
+  breedSellValue: 5

@@ -30,3 +30,5 @@ MonoBehaviour:
     rgba: 4285687431
   - serializedVersion: 2
     rgba: 4288521143
+  breedFondnessMult: 1
+  breedSellValue: 5
