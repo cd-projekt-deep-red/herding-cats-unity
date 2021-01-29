@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class InteractionDetector : MonoBehaviour
 {
-    private IList<Interactable> interactables = new List<Interactable>();
+    private readonly IList<Interactable> interactables = new List<Interactable>();
     private Interactable closestInteractable = null;
     private PlayerOne player;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.player = this.gameObject.transform.parent.gameObject.GetComponent<PlayerOne>();
+        this.player = this.transform.parent.GetComponent<PlayerOne>();
     }
 
     // Update is called once per frame
@@ -33,12 +33,12 @@ public class InteractionDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        this.interactables.Add(collision.gameObject.GetComponent<Interactable>());
+        this.interactables.Add(collision.GetComponent<Interactable>());
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        this.interactables.Remove(collision.gameObject.GetComponent<Interactable>());
+        this.interactables.Remove(collision.GetComponent<Interactable>());
     }
 
     private void CalculateClosestInteractable()

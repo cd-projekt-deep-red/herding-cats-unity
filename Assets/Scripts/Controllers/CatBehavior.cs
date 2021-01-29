@@ -6,12 +6,14 @@ using Random = UnityEngine.Random;
 public class CatBehavior : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
+    private Animator animator;
     private CatBehaviorState state = CatBehaviorState.Sitting;
     private Vector2 destination;
 
     void Start()
     {
-        this.rigidBody = this.gameObject.GetComponent<Rigidbody2D>();
+        this.rigidBody = GetComponent<Rigidbody2D>();
+        this.animator = GetComponent<Animator>();
         StartCoroutine("CycleState");
     }
 
@@ -26,6 +28,39 @@ public class CatBehavior : MonoBehaviour
             {
                 this.state = CatBehaviorState.Sitting;
             }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        switch (this.state)
+        {
+            case CatBehaviorState.Moving:
+                if (this.rigidBody.velocity.x > 0)
+                {
+                    this.animator.SetBool("MoveRight", true);
+                    this.animator.SetBool("MoveLeft", false);
+                    this.animator.SetBool("Sit", false);
+                }
+                else
+                {
+                    this.animator.SetBool("MoveRight", false);
+                    this.animator.SetBool("MoveLeft", true);
+                    this.animator.SetBool("Sit", false);
+                }
+                break;
+            case CatBehaviorState.Sitting:
+                this.animator.SetBool("MoveRight", false);
+                this.animator.SetBool("MoveLeft", false);
+                this.animator.SetBool("Sit", true);
+                break;
+            case CatBehaviorState.Standing:
+                this.animator.SetBool("MoveRight", false);
+                this.animator.SetBool("MoveLeft", false);
+                this.animator.SetBool("Sit", false);
+                break;
+            default:
+                break;
         }
     }
 

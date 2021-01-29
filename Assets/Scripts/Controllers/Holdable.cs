@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public abstract class Holdable : Interactable
+﻿public abstract class Holdable : Interactable
 {
     public abstract void OnPickUp();
 

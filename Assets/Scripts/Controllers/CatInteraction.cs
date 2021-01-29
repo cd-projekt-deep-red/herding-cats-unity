@@ -1,18 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CatInteraction : Holdable
 {
+    private Animator animator;
+    private CatBehavior catBehavior;
+    private Rigidbody2D rigidbody2D;
+
+    private void Start()
+    {
+        this.animator = GetComponent<Animator>();
+        this.catBehavior = GetComponent<CatBehavior>();
+        this.rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
     public override void OnPickUp()
     {
-        this.GetComponent<CatBehavior>().enabled = false;
-        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        this.animator.SetBool("MoveRight", false);
+        this.animator.SetBool("MoveLeft", false);
+        this.animator.SetBool("Sit", true);
+        this.catBehavior.enabled = false;
+        this.rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
     }
 
     public override void OnPutDown()
     {
-        this.GetComponent<CatBehavior>().enabled = true;
-        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        this.catBehavior.enabled = true;
+        this.rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
     }
 }
