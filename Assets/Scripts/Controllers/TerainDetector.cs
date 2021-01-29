@@ -17,7 +17,7 @@ public class TerainDetector : MonoBehaviour
 
     }
     // Update is called once per frame
-    void FixedUpdate()
+   /* void FixedUpdate()
     {
         Vector3Int tileCoordinate = tilemap.WorldToCell(new Vector3 { x = footposition.position.x, y = footposition.position.y, z = 0f });
         Sprite currentTerainSprite = tilemap.GetSprite(tileCoordinate);
@@ -31,7 +31,7 @@ public class TerainDetector : MonoBehaviour
             Debug.Log("walking on terain" + currentTerainSprite.name);
         }
 
-    }
+    }*/
 
    /* void OnTriggerEnter2D(Collider2D collision)
     {
