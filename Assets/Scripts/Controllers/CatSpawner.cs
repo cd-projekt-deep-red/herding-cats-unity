@@ -44,8 +44,10 @@ public class CatSpawner : MonoBehaviour
         for (int i = 0; i < howManyCats; i++)
         {
             float x = Random.Range(-1 * boundsCollider.bounds.extents.x, boundsCollider.bounds.extents.x);
+            Debug.Log(boundsCollider.bounds.extents.x.ToString());
 
             float y = Random.Range(-1 * boundsCollider.bounds.extents.y, boundsCollider.bounds.extents.y);
+            Debug.Log(boundsCollider.bounds.extents.y.ToString());
 
             GameObject cat = Instantiate(catPrefab, new Vector3 { x = 0f, y = 0f, z = 0f }, Quaternion.identity);
             cat.transform.SetParent(catWrapper.transform, false);

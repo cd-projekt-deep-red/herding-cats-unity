@@ -10,6 +10,7 @@ public class PlayerOne : MonoBehaviour
     [SerializeField] private GameObject footprintPrefab;
     [SerializeField] private HorzMovementDirection playerHorzDirection;
 
+    public Holdable heldObject;
     public float playerSpeed = 0f;
 
     // Update is called once per frame
@@ -23,7 +24,6 @@ public class PlayerOne : MonoBehaviour
 
         //Use the two store floats to create a new Vector2 variable movement.
         Vector2 movement = new Vector2(moveHorizontal, moveVertical) * 5000;
-        //print(movement);
 
         //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
         rigidbody.AddForce(movement);
@@ -91,6 +91,20 @@ public class PlayerOne : MonoBehaviour
       }
 
       Instantiate(footprintPrefab, footPosition, Quaternion.identity);
+    }
+
+    public void PickUp(Holdable holdable)
+    {
+        holdable.transform.SetParent(this.transform);
+        holdable.transform.localPosition = Vector3.up * 1;
+        this.heldObject = holdable;
+    }
+
+    public void PutDownHeldObject()
+    {
+        this.heldObject.transform.localPosition = Vector3.zero;
+        this.heldObject.transform.SetParent(null);
+        this.heldObject = null;
     }
 
     public enum HorzMovementDirection {
