@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatInteraction : Interactable
+public class CatInteraction : Holdable
 {
-
-    public override void Interact(PlayerOne player)
+    public override void OnPickUp()
     {
-        print("Player tried to interact with me");
         this.GetComponent<CatBehavior>().enabled = false;
         this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        this.transform.SetParent(player.transform);
-        this.transform.localPosition = Vector3.zero + Vector3.up * 1;
     }
 
-    public override bool IsInteractable(PlayerOne player)
+    public override void OnPutDown()
     {
-        return true;
+        this.GetComponent<CatBehavior>().enabled = true;
+        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
 }

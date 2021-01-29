@@ -10,6 +10,7 @@ public class PlayerOne : MonoBehaviour
     [SerializeField] private GameObject footprintPrefab;
     [SerializeField] private HorzMovementDirection playerHorzDirection;
 
+    public Holdable heldObject;
     public float playerSpeed = 0f;
 
     // Update is called once per frame
@@ -90,6 +91,20 @@ public class PlayerOne : MonoBehaviour
       }
 
       Instantiate(footprintPrefab, footPosition, Quaternion.identity);
+    }
+
+    public void PickUp(Holdable holdable)
+    {
+        holdable.transform.SetParent(this.transform);
+        holdable.transform.localPosition = Vector3.up * 1;
+        this.heldObject = holdable;
+    }
+
+    public void PutDownHeldObject()
+    {
+        this.heldObject.transform.localPosition = Vector3.zero;
+        this.heldObject.transform.SetParent(null);
+        this.heldObject = null;
     }
 
     public enum HorzMovementDirection {

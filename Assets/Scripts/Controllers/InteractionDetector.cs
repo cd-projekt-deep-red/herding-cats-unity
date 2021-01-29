@@ -17,9 +17,16 @@ public class InteractionDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && this.closestInteractable != null)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            this.closestInteractable.Interact(this.player);
+            if (this.closestInteractable == null && this.player.heldObject != null)
+            {
+                this.player.heldObject.Interact(this.player);
+            }
+            else if (this.closestInteractable != null)
+            {
+                this.closestInteractable.Interact(this.player);
+            }
         }
         CalculateClosestInteractable();
     }
