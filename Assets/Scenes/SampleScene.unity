@@ -462,10 +462,7 @@ GameObject:
   - component: {fileID: 1453944991}
   - component: {fileID: 1453944993}
   - component: {fileID: 1453944992}
-<<<<<<< HEAD
-=======
   - component: {fileID: 1453944995}
->>>>>>> 767604a2ef69c6719c91322893e0faa0f98ace94
   - component: {fileID: 1453944994}
   m_Layer: 0
   m_Name: Ground
@@ -18924,9 +18921,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
-<<<<<<< HEAD
---- !u!50 &1453944994
-=======
 --- !u!19719996 &1453944994
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -18944,7 +18938,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
 --- !u!50 &1453944995
->>>>>>> 767604a2ef69c6719c91322893e0faa0f98ace94
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -19024,6 +19017,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4265436646370977509, guid: a1a73f0c32bbe954fad9529ca52a37ac,
+        type: 3}
+      propertyPath: tilemap
+      value: 
+      objectReference: {fileID: 1453944993}
     - target: {fileID: 8127649562877688434, guid: a1a73f0c32bbe954fad9529ca52a37ac,
         type: 3}
       propertyPath: m_Name
