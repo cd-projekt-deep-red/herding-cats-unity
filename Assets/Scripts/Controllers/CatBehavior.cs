@@ -33,13 +33,16 @@ public class CatBehavior : MonoBehaviour
             // https://forum.unity.com/threads/rigidbody-moveposition-doesnt-stop-moving-even-after-reaching-destination.544552/#post-3591916
             Vector3 newPosition = Vector3.MoveTowards(this.transform.position, this.destination, Time.fixedDeltaTime * speed);
             this.rigidBody.MovePosition(newPosition);
-            if (((Vector2)this.transform.position - this.destination).magnitude < 1)
+            if (((Vector2)this.transform.position - this.destination).magnitude < 0.5f)
             {
                 if (this.state == CatBehaviorState.Eating)
                 {
                     StartCoroutine("EatAndCycleState");
                 }
-                this.state = CatBehaviorState.Sitting;
+                else
+                {
+                    this.state = CatBehaviorState.Sitting;
+                }
             }
         }
         else if (this.state == CatBehaviorState.WalkAway)
@@ -85,6 +88,7 @@ public class CatBehavior : MonoBehaviour
                 }
                 break;
             case CatBehaviorState.Sitting:
+            case CatBehaviorState.Eating:
                 this.animator.SetBool("MoveRight", false);
                 this.animator.SetBool("MoveLeft", false);
                 this.animator.SetBool("Sit", true);
@@ -128,7 +132,9 @@ public class CatBehavior : MonoBehaviour
 
     public void OnPlayerDetected(GameObject player)
     {
-        if (this.fondness <= 1 && !player.GetComponent<PlayerOne>().isCrouching && this.state != CatBehaviorState.Eating)
+        if (this.fondness <= 1 &&
+            !player.GetComponent<PlayerOne>().isCrouching &&
+            this.state != CatBehaviorState.Eating)
         {
             if (this.fondness >= -10 &&
                 (this.transform.position - player.transform.position).magnitude > 2)
