@@ -38,12 +38,13 @@ public class DroneScript : MonoBehaviour
 
     public void droneTakeoff()
     {
-
         gameState.catsEvacuated(goalScript.catsInGoal);
         foreach(GameObject cat in goalScript.catsInGoal)
         {
             Destroy(cat);
         }
+
+        
     }
 
 }

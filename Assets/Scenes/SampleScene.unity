@@ -20547,9 +20547,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 913053965}
-  moneyText: {fileID: 0}
-  valueChangeText: {fileID: 0}
-  paypurrAnimation: {fileID: 0}
+  moneyText: {fileID: 1379385348}
+  valueChangeText: {fileID: 309458314}
+  paypurrAnimation: {fileID: 94269263}
 --- !u!1 &1355906370
 GameObject:
   m_ObjectHideFlags: 0
