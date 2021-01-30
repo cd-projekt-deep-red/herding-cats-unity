@@ -24,7 +24,7 @@ public class GoalDetector : MonoBehaviour
         
             catsInGoal.Add(collision.gameObject);
 
-            Debug.Log($"you have caught {catsInGoal.Count} cats");
+            //Debug.Log($"you have caught {catsInGoal.Count} cats");
         
        
     }
@@ -33,7 +33,7 @@ public class GoalDetector : MonoBehaviour
     {
         catsInGoal.Remove(collider.gameObject);
 
-        Debug.Log($"you have caught {catsInGoal.Count} cats");
+        //Debug.Log($"you have caught {catsInGoal.Count} cats");
     }
 
 

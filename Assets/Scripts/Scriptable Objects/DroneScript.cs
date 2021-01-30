@@ -41,11 +41,16 @@ public class DroneScript : MonoBehaviour
     {
         if (goalScript.catsInGoal.Count != 0)
         {
+            int catsevacuated = 0;
+            Debug.Log(goalScript.catsInGoal.Count.ToString() + "cats in goal");
             gameState.catsEvacuated(goalScript.catsInGoal);
+            Debug.Log("cat count " + goalScript.catsInGoal.ToString());
             for (int i = 0; i < goalScript.catsInGoal.Count; i++)
             {
+                catsevacuated++;
                 Destroy(goalScript.catsInGoal[i]);
             }
+            Debug.Log(catsevacuated.ToString() + "cats evacuated");
             UIScript.updatePlayerMoney();
         }
         
