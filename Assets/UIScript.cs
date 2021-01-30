@@ -6,6 +6,9 @@ using TMPro;
 public class UIScript : MonoBehaviour
 {
     [SerializeField]private TextMeshProUGUI timerText;
+    [SerializeField]private TextMeshProUGUI moneyText;
+
+    private float playerCash = 0f;
 
     public void SetDroneTime(float timeLeft)
     {
@@ -21,5 +24,24 @@ public class UIScript : MonoBehaviour
       {
         timerText.text = minutesLeft.ToString() + ":" + secondsLeft.ToString("D2") + timerString;
       }
+    }
+
+    public void SetPlayerMoney(float cashValue)
+    {
+      if(cashValue >= 0)
+      {
+          // Add Cash
+
+      }
+      else
+      {
+        // Minus Cash
+
+      }
+    }
+
+    public void UpdatePlayerMoney()
+    {
+      moneyText.text = ((int)playerCash).ToString();
     }
 }
