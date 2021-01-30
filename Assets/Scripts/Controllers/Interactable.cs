@@ -12,6 +12,7 @@ public abstract class Interactable : MonoBehaviour
         if (!this.isHighlighted)
         {
             GetComponent<SpriteRenderer>().material.SetFloat("_OutlineThickness", 1f);
+            GetComponent<SpriteRenderer>().color = Color.red;
             this.isHighlighted = true;
         }
     }
@@ -21,6 +22,7 @@ public abstract class Interactable : MonoBehaviour
         if (this.isHighlighted)
         {
             GetComponent<SpriteRenderer>().material.SetFloat("_OutlineThickness", 0f);
+            GetComponent<SpriteRenderer>().color = Color.white;
             this.isHighlighted = false;
         }
     }

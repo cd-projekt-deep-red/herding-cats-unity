@@ -1,5 +1,7 @@
 ﻿public abstract class Holdable : Interactable
 {
+    public bool isBeingHeld = false;
+
     public abstract void OnPickUp();
 
     public abstract void OnPutDown();
@@ -10,11 +12,13 @@
         {
             OnPickUp();
             player.PickUp(this);
+            this.isBeingHeld = true;
         }
         else if (player.heldObject == this)
         {
             OnPutDown();
             player.PutDownHeldObject();
+            this.isBeingHeld = false;
         }
     }
 
@@ -22,6 +26,7 @@
     {
         if (player.heldObject == this) return false;
         if (player.heldObject != null) return false;
+        if (this.isBeingHeld) return false;
         return true;
     }
 }
