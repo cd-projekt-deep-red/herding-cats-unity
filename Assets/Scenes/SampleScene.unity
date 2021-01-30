@@ -1582,16 +1582,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 5.0235977, y: 0.108217955}
-      - {x: -0.41072845, y: -4.6384745}
-      - {x: -11.232312, y: -0.91488886}
-      - {x: -3.0915642, y: 3.730196}
-      - {x: -12.354055, y: 7.2518616}
-      - {x: -16.745487, y: 4.529024}
-      - {x: -20.456795, y: 1.6895275}
-      - {x: -23.888474, y: -1.5904975}
-      - {x: 0.5877882, y: -13.937924}
-      - {x: 12.210453, y: -3.2858024}
+    - - {x: -1.3145328, y: 4.777362}
+      - {x: -6.581142, y: 6.8770275}
+      - {x: -20.16236, y: -1.3615599}
+      - {x: 0.20500755, y: -11.112082}
+      - {x: 12.981735, y: -2.4142237}
+      - {x: 8.317999, y: 0.1521883}
+      - {x: 0.41441113, y: -3.961411}
+      - {x: -8.300296, y: 0.08476049}
 --- !u!114 &983737364 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8127649562877688441, guid: a1a73f0c32bbe954fad9529ca52a37ac,
@@ -20406,41 +20404,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1190621409
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1190621410}
-  m_Layer: 5
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1190621410
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190621409}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1354315297}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1203031523
 GameObject:
   m_ObjectHideFlags: 0
@@ -20574,7 +20537,6 @@ GameObject:
   - component: {fileID: 1354315295}
   - component: {fileID: 1354315294}
   - component: {fileID: 1354315298}
-  - component: {fileID: 1354315299}
   m_Layer: 5
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -20656,7 +20618,6 @@ RectTransform:
   - {fileID: 273930834}
   - {fileID: 308448842}
   - {fileID: 94269262}
-  - {fileID: 1190621410}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20682,21 +20643,6 @@ MonoBehaviour:
   valueChangeText: {fileID: 309458314}
   paypurrAnimation: {fileID: 94269263}
   gameState: {fileID: 11400000, guid: bcb21443b7016bc4b93d05d21a90272d, type: 2}
-<<<<<<< HEAD
-=======
---- !u!114 &1354315299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354315293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ba2e514b6716e540a47bfe8dfadd6ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
->>>>>>> 191b0fb... bug fix: drone not taking all cats from goal
 --- !u!1 &1355906370
 GameObject:
   m_ObjectHideFlags: 0
@@ -21750,7 +21696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1562225757}
   - component: {fileID: 1562225756}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: SceneBoundry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
