@@ -16,11 +16,13 @@ public class CatBehavior : MonoBehaviour
     private CatBehaviorState state;
     private Vector2 destination;
     private Vector2 antiDestination;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         this.rigidBody = GetComponent<Rigidbody2D>();
         this.animator = GetComponent<Animator>();
+        this.spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine("CycleState");
     }
 
@@ -57,6 +59,9 @@ public class CatBehavior : MonoBehaviour
                 StartCoroutine("CycleState");
             }
         }
+
+        //at the end of updating movement we need to update the cat layer order
+        spriteRenderer.sortingOrder = (int)(-1* transform.position.y + 150f);
     }
 
     private void LateUpdate()

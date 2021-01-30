@@ -32,6 +32,9 @@ public class PlayerOne : MonoBehaviour
         //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
         rigidbody.AddForce(movement);
 
+        //need to calculate layer based on transform.y
+        spriteRenderer.sortingOrder = (int) (-1* transform.position.y + 150f);
+
         // If player is near goal display hero goal UI
         //GoalUIScript.ToggleGoalDisplay(Vector3.Distance(this.gameObject.transform.position, goalGO.transform.position) <= 4.5f);
     }
