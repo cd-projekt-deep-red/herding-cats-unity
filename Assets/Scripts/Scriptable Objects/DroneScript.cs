@@ -7,8 +7,11 @@ public class DroneScript : MonoBehaviour
     public float droneCycleTime = 60.0f;
     [SerializeField]public UIScript UIScript;
     [SerializeField]private Animator droneAnimator;
+    [SerializeField] private GameState gameState;
+    [SerializeField] private GoalDetector goalScript;
 
     private float timeToCycle = 0f;
+    
 
     public void SetAnimationTrigger(bool triggerState)
     {
@@ -32,4 +35,18 @@ public class DroneScript : MonoBehaviour
         }
       }
     }
+
+    
+
+
+    public void droneTakeoff()
+    {
+
+        gameState.catsEvacuated(goalScript.catsInGoal);
+        foreach(GameObject cat in goalScript.catsInGoal)
+        {
+            Destroy(cat);
+        }
+    }
+
 }

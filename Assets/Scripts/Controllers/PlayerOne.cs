@@ -11,7 +11,7 @@ public class PlayerOne : MonoBehaviour
     [SerializeField] private HorzMovementDirection playerHorzDirection;
     [Range(-1, 1)] private float lastPlayerMovement;
 
-    [SerializeField] private GoalUI GoalUIScript;
+  
     [SerializeField] private GameObject goalGO;
 
     public Holdable heldObject;
@@ -35,8 +35,7 @@ public class PlayerOne : MonoBehaviour
         //need to calculate layer based on transform.y
         spriteRenderer.sortingOrder = (int) (-1* transform.position.y + 150f);
 
-        // If player is near goal display hero goal UI
-        //GoalUIScript.ToggleGoalDisplay(Vector3.Distance(this.gameObject.transform.position, goalGO.transform.position) <= 4.5f);
+       
     }
 
     private void LateUpdate()

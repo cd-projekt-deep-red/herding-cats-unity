@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class GoalDetector : MonoBehaviour
 {
-    
-    IList<GameObject> catsInGoal = new List<GameObject>();
+    public IList<GameObject> catsInGoal = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
