@@ -13,13 +13,13 @@ public class CatSpawner : MonoBehaviour
     [SerializeField] private GameObject catWrapper;
     [SerializeField] private GameObject boundsColliderObject;
     private Dictionary<string,CatBreed> breeds = new Dictionary<string, CatBreed>();
-    private EdgeCollider2D boundsCollider;
+    private Collider2D spawnArea;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        boundsCollider = boundsColliderObject.GetComponent<EdgeCollider2D>();
+        spawnArea = GetComponent<Collider2D>();
         SpawnCatsRandom(25);
 
         // Add breeds to breed dictionary
@@ -41,12 +41,18 @@ public class CatSpawner : MonoBehaviour
 
     private void SpawnCatsRandom(int howManyCats)
     {
+        Bounds bounds = spawnArea.bounds;
+        Vector2 center = bounds.center;
         for (int i = 0; i < howManyCats; i++)
         {
-            float x = Random.Range(-1 * boundsCollider.bounds.extents.x, boundsCollider.bounds.extents.x);
-           
 
-            float y = Random.Range(-1 * boundsCollider.bounds.extents.y, boundsCollider.bounds.extents.y);
+            float x = 0;
+            float y = 0;
+            do
+            {
+                x = Random.Range(center.x - bounds.extents.x, center.x + bounds.extents.x);
+                y = Random.Range(center.y - bounds.extents.y, center.x + bounds.extents.y);
+            } while (!spawnArea.OverlapPoint(new Vector2 { x = x, y = y }));
             
 
             GameObject cat = Instantiate(catPrefab, new Vector3 { x = 0f, y = 0f, z = 0f }, Quaternion.identity);
