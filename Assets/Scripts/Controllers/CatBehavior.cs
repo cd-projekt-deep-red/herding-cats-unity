@@ -134,7 +134,8 @@ public class CatBehavior : MonoBehaviour
     {
         if (this.fondness <= 1 &&
             !player.GetComponent<PlayerOne>().isCrouching &&
-            this.state != CatBehaviorState.Eating)
+            this.state != CatBehaviorState.Eating &&
+            this.state != CatBehaviorState.MovingToFood)
         {
             if (this.fondness >= -10 &&
                 (this.transform.position - player.transform.position).magnitude > 2)
