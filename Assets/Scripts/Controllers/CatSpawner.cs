@@ -20,7 +20,7 @@ public class CatSpawner : MonoBehaviour
     void Start()
     {
         boundsCollider = boundsColliderObject.GetComponent<EdgeCollider2D>();
-        SpawnCatsRandom(100);
+        SpawnCatsRandom(25);
 
         // Add breeds to breed dictionary
         for(int i=0; i < breedArray.Length; i++)
