@@ -28,20 +28,19 @@ public class CatBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (this.state == CatBehaviorState.Moving || this.state == CatBehaviorState.Eating)
+        if (this.state == CatBehaviorState.Moving || this.state == CatBehaviorState.MovingToFood)
         {
             // https://forum.unity.com/threads/rigidbody-moveposition-doesnt-stop-moving-even-after-reaching-destination.544552/#post-3591916
             Vector3 newPosition = Vector3.MoveTowards(this.transform.position, this.destination, Time.fixedDeltaTime * speed);
             this.rigidBody.MovePosition(newPosition);
             if (((Vector2)this.transform.position - this.destination).magnitude < 0.5f)
             {
-                if (this.state == CatBehaviorState.Eating)
-                {
-                    StartCoroutine("EatAndCycleState");
-                }
-                else
+                if (this.state == CatBehaviorState.Moving)
                 {
                     this.state = CatBehaviorState.Sitting;
+                } else if (this.state == CatBehaviorState.MovingToFood)
+                {
+                    this.state = CatBehaviorState.Eating;
                 }
             }
         }
@@ -112,6 +111,7 @@ public class CatBehavior : MonoBehaviour
                 .Where(s =>
                     s != CatBehaviorState.WalkAway &&
                     s != CatBehaviorState.RunAway &&
+                    s != CatBehaviorState.MovingToFood &&
                     s != CatBehaviorState.Eating);
             CatBehaviorState newState = (CatBehaviorState) values.ElementAt(Random.Range(0, values.Count()));
             if (newState == CatBehaviorState.Moving)
@@ -125,7 +125,7 @@ public class CatBehavior : MonoBehaviour
 
     private IEnumerator EatAndCycleState()
     {
-        yield return new WaitForSeconds(Random.Range(5f, 5f));
+        yield return new WaitForSeconds(Random.Range(10f, 30f));
         // I'm done eating
         StartCoroutine("CycleState");
     }
@@ -155,8 +155,9 @@ public class CatBehavior : MonoBehaviour
     public void OnFoodDetected(GameObject food)
     {
         StopCoroutine("CycleState");
-        this.state = CatBehaviorState.Eating;
+        this.state = CatBehaviorState.MovingToFood;
         this.destination = food.transform.position;
+        StartCoroutine("EatAndCycleState");
     }
 }
 
@@ -167,5 +168,6 @@ public enum CatBehaviorState
     Standing,
     WalkAway,
     RunAway,
-    Eating
+    Eating,
+    MovingToFood
 }
