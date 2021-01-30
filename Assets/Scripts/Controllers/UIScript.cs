@@ -31,7 +31,7 @@ public class UIScript : MonoBehaviour
 
     public void updatePlayerMoney()
     {
-      
+
       if(gameState.playerMoney >= playerCash )
       {
           // Add Cash
