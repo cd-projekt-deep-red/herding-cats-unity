@@ -1500,7 +1500,7 @@ GameObject:
   - component: {fileID: 946684350}
   - component: {fileID: 946684349}
   - component: {fileID: 946684351}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CatSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
