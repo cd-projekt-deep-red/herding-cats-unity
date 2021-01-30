@@ -128,6 +128,12 @@ public class PlayerOne : MonoBehaviour
 
     public void PickUp(Holdable holdable)
     {
+        if (holdable.GetComponent<CatBehavior>() != null) // if cat
+        {
+            holdable.GetComponent<BoxCollider2D>().offset = Vector3.up * -1.6f;
+            holdable.GetComponent<BoxCollider2D>().size = new Vector2 { x = .1f, y = .1f };
+            Debug.Log("cat hitbox moved to feet");
+        }
         holdable.transform.SetParent(this.transform);
         holdable.transform.localPosition = Vector3.up * 1;
         this.heldObject = holdable;
@@ -135,6 +141,12 @@ public class PlayerOne : MonoBehaviour
 
     public void PutDownHeldObject()
     {
+        if (heldObject.GetComponent<CatBehavior>() != null) // if cat
+        {
+            Vector2 originalCatColiderSize = new Vector2 { x = 0.8181818f, y = 0.6363636f };
+            heldObject.GetComponent<BoxCollider2D>().size = originalCatColiderSize;
+            heldObject.GetComponent<BoxCollider2D>().offset = Vector3.zero;
+        }
         this.heldObject.transform.localPosition = Vector3.up * -0.25f;
         this.heldObject.transform.SetParent(null);
         this.heldObject = null;
