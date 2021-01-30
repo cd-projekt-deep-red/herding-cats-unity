@@ -11,18 +11,16 @@ public class CatBehavior : MonoBehaviour
     public float maxStamina;
     public float speed;
     public float fondness;
+    public CatBehaviorState state;
+    public Vector2 destination;
+    public Vector2 antiDestination;
     private Rigidbody2D rigidBody;
     private Animator animator;
-    private CatBehaviorState state;
-    private Vector2 destination;
-    private Vector2 antiDestination;
-    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         this.rigidBody = GetComponent<Rigidbody2D>();
         this.animator = GetComponent<Animator>();
-        this.spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine("CycleState");
     }
 
@@ -31,7 +29,6 @@ public class CatBehavior : MonoBehaviour
         if (this.state == CatBehaviorState.Moving)
         {
             // https://forum.unity.com/threads/rigidbody-moveposition-doesnt-stop-moving-even-after-reaching-destination.544552/#post-3591916
-            //Vector3 newPosition = Vector3.MoveTowards(this.transform.position, this.destination, Time.fixedDeltaTime * speed);
             Vector3 newPosition = Vector3.MoveTowards(this.transform.position, this.destination, Time.fixedDeltaTime * speed);
             this.rigidBody.MovePosition(newPosition);
             if (((Vector2)this.transform.position - this.destination).magnitude < 0.01)
@@ -44,24 +41,21 @@ public class CatBehavior : MonoBehaviour
             this.fondness -= .1f;
             Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2)this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * speed * 2);
             this.rigidBody.MovePosition(newPosition);
-            if (((Vector2)this.transform.position - this.antiDestination).magnitude > 10)
+            if (((Vector2)this.transform.position - this.antiDestination).magnitude > 2)
             {
                 StartCoroutine("CycleState");
             }
         }
         else if (this.state == CatBehaviorState.RunAway)
         {
-            this.fondness -= .1f;
-            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2)this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * speed * 6);
+            this.fondness -= .05f;
+            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2)this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * speed * 5);
             this.rigidBody.MovePosition(newPosition);
-            if (((Vector2)this.transform.position - this.antiDestination).magnitude > 10)
+            if (((Vector2)this.transform.position - this.antiDestination).magnitude > 5)
             {
                 StartCoroutine("CycleState");
             }
         }
-
-        //at the end of updating movement we need to update the cat layer order
-        spriteRenderer.sortingOrder = (int)(-1* transform.position.y + 150f);
     }
 
     private void LateUpdate()
@@ -103,7 +97,6 @@ public class CatBehavior : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(1f, 5f));
             System.Collections.Generic.IEnumerable<CatBehaviorState> values = Enum.GetValues(typeof(CatBehaviorState))
                 .Cast<CatBehaviorState>()
                 .Where(s => s != CatBehaviorState.WalkAway && s != CatBehaviorState.RunAway);
@@ -113,8 +106,8 @@ public class CatBehavior : MonoBehaviour
                 this.destination = new Vector2(Random.Range(-20f, 20f), Random.Range(-20f, 20f));
             }
             this.state = newState;
+            yield return new WaitForSeconds(Random.Range(1f, 5f));
         }
-
     }
 
     public void OnPlayerDetected(GameObject player)
