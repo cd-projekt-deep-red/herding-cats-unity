@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -22717,12 +22717,9 @@ GameObject:
   - component: {fileID: 1554884566}
   - component: {fileID: 1554884565}
   - component: {fileID: 1554884567}
-<<<<<<< HEAD
-  m_Layer: 0
-=======
   - component: {fileID: 1554884568}
+  - component: {fileID: 1554884569}
   m_Layer: 13
->>>>>>> b7089bd... work on store logic
   m_Name: Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22832,20 +22829,14 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
-<<<<<<< HEAD
 --- !u!82 &1554884567
 AudioSource:
-=======
---- !u!114 &1554884567
-MonoBehaviour:
->>>>>>> b7089bd... work on store logic
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554884562}
   m_Enabled: 1
-<<<<<<< HEAD
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -22934,15 +22925,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-=======
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5778ec00251f3fa49a2bcbb8c7b736ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameState: {fileID: 11400000, guid: bcb21443b7016bc4b93d05d21a90272d, type: 2}
-  boxStorePrefab: {fileID: 7116013132124650302, guid: 8c1412dec8b8cdf4c8fbfd260a9d4c91,
-    type: 3}
-  store: {fileID: 1554884562}
 --- !u!58 &1554884568
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -22959,7 +22941,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 7
->>>>>>> b7089bd... work on store logic
+--- !u!114 &1554884569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554884562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5778ec00251f3fa49a2bcbb8c7b736ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 11400000, guid: bcb21443b7016bc4b93d05d21a90272d, type: 2}
+  boxStorePrefab: {fileID: 7116013132124650302, guid: 8c1412dec8b8cdf4c8fbfd260a9d4c91,
+    type: 3}
+  store: {fileID: 1554884562}
 --- !u!1 &1562225755
 GameObject:
   m_ObjectHideFlags: 0
@@ -22994,8 +22991,8 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: 5.5, y: -21.3}
-  - {x: -40.00504, y: 4.6521597}
-  - {x: -20.75079, y: 14.7374}
+  - {x: -46.270252, y: 5.774209}
+  - {x: -23.352238, y: 16.040192}
   - {x: 27.5, y: -10.3}
   - {x: 5.5, y: -21.3}
 --- !u!4 &1562225757
