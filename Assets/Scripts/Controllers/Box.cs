@@ -19,9 +19,9 @@ public class Box : Interactable
         catInteraction.OnPickUp();
         catInteraction.isBeingHeld = true;
         cat.transform.SetParent(this.transform);
-        cat.transform.localPosition = Vector3.zero;
+        cat.transform.localPosition = Vector3.up * Random.Range(.5f, .9f) + Vector3.right * Random.Range(-.15f, .15f);
+        cat.GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
         this.cats.Add(cat);
-        print("putting cat in box. # cats = " + cats.Count);
     }
 
     public override bool IsInteractable(PlayerOne player)
