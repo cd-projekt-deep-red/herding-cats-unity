@@ -65,7 +65,7 @@ public class CatSpawner : MonoBehaviour
 
             
             catStyle.breedData = breedInfo;
-
+            cat.GetComponent<CatBehavior>().fondness = breedInfo.breedFondnessMult;
         }
     }
 }

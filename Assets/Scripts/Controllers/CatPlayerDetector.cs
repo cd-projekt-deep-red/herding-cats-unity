@@ -10,7 +10,6 @@ public class CatPlayerDetector : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        
         this.cat.OnPlayerDetected(collision.gameObject);
     }
 }

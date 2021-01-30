@@ -6,16 +6,23 @@ using Random = UnityEngine.Random;
 
 public class CatBehavior : MonoBehaviour
 {
+    public float stamina;
+    public float staminaRecoverSpeed;
+    public float maxStamina;
+    public float speed;
+    public float fondness;
     private Rigidbody2D rigidBody;
     private Animator animator;
-    private CatBehaviorState state = CatBehaviorState.Sitting;
+    private CatBehaviorState state;
     private Vector2 destination;
     private Vector2 antiDestination;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         this.rigidBody = GetComponent<Rigidbody2D>();
         this.animator = GetComponent<Animator>();
+        this.spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine("CycleState");
     }
 
@@ -24,23 +31,37 @@ public class CatBehavior : MonoBehaviour
         if (this.state == CatBehaviorState.Moving)
         {
             // https://forum.unity.com/threads/rigidbody-moveposition-doesnt-stop-moving-even-after-reaching-destination.544552/#post-3591916
-            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, this.destination, Time.fixedDeltaTime);
+            //Vector3 newPosition = Vector3.MoveTowards(this.transform.position, this.destination, Time.fixedDeltaTime * speed);
+            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, this.destination, Time.fixedDeltaTime * speed);
             this.rigidBody.MovePosition(newPosition);
             if (((Vector2)this.transform.position - this.destination).magnitude < 0.01)
             {
                 this.state = CatBehaviorState.Sitting;
             }
         }
-
-        if (this.state == CatBehaviorState.PathAway)
+        else if (this.state == CatBehaviorState.WalkAway)
         {
-            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2) this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * 5);
+            this.fondness -= .1f;
+            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2)this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * speed * 2);
             this.rigidBody.MovePosition(newPosition);
-            if (((Vector2) this.transform.position - this.antiDestination).magnitude > 10)
+            if (((Vector2)this.transform.position - this.antiDestination).magnitude > 10)
             {
                 StartCoroutine("CycleState");
             }
         }
+        else if (this.state == CatBehaviorState.RunAway)
+        {
+            this.fondness -= .1f;
+            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2)this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * speed * 6);
+            this.rigidBody.MovePosition(newPosition);
+            if (((Vector2)this.transform.position - this.antiDestination).magnitude > 10)
+            {
+                StartCoroutine("CycleState");
+            }
+        }
+
+        //at the end of updating movement we need to update the cat layer order
+        spriteRenderer.sortingOrder = (int)(-1* transform.position.y + 150f);
     }
 
     private void LateUpdate()
@@ -48,7 +69,8 @@ public class CatBehavior : MonoBehaviour
         switch (this.state)
         {
             case CatBehaviorState.Moving:
-            case CatBehaviorState.PathAway:
+            case CatBehaviorState.WalkAway:
+            case CatBehaviorState.RunAway:
                 if (this.rigidBody.velocity.x > 0)
                 {
                     this.animator.SetBool("MoveRight", true);
@@ -84,11 +106,11 @@ public class CatBehavior : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(1f, 5f));
             System.Collections.Generic.IEnumerable<CatBehaviorState> values = Enum.GetValues(typeof(CatBehaviorState))
                 .Cast<CatBehaviorState>()
-                .Where(s => s != CatBehaviorState.PathAway);
+                .Where(s => s != CatBehaviorState.WalkAway && s != CatBehaviorState.RunAway);
             CatBehaviorState newState = (CatBehaviorState) values.ElementAt(Random.Range(0, values.Count()));
             if (newState == CatBehaviorState.Moving)
             {
-                this.destination = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
+                this.destination = new Vector2(Random.Range(-20f, 20f), Random.Range(-20f, 20f));
             }
             this.state = newState;
         }
@@ -97,9 +119,18 @@ public class CatBehavior : MonoBehaviour
 
     public void OnPlayerDetected(GameObject player)
     {
-        StopCoroutine("CycleState");
-        this.state = CatBehaviorState.PathAway;
-        this.antiDestination = player.transform.position;
+        if (this.fondness <= 1 && this.fondness >= -10)
+        {
+            StopCoroutine("CycleState");
+            this.state = CatBehaviorState.WalkAway;
+            this.antiDestination = player.transform.position;
+        }
+        else if (this.fondness < -10)
+        {
+            StopCoroutine("CycleState");
+            this.state = CatBehaviorState.RunAway;
+            this.antiDestination = player.transform.position;
+        }
     }
 }
 
@@ -108,5 +139,6 @@ public enum CatBehaviorState
     Moving,
     Sitting,
     Standing,
-    PathAway
+    WalkAway,
+    RunAway
 }
