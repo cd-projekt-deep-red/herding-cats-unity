@@ -1590,6 +1590,7 @@ GameObject:
   - component: {fileID: 1354315296}
   - component: {fileID: 1354315295}
   - component: {fileID: 1354315294}
+  - component: {fileID: 1354315298}
   m_Layer: 5
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -1679,6 +1680,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1354315298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354315293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3a8b07092264ba187386cc24853dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 913053965}
 --- !u!1 &1355906370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,6 +1960,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1418701156}
+  - component: {fileID: 1418701157}
   - component: {fileID: 1418701155}
   m_Layer: 0
   m_Name: Drone Parent
@@ -1988,6 +2003,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1418701157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418701154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a5505a9725544578cc9c2e8d4b3786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droneCycleTime: 60
+  UIScript: {fileID: 1354315298}
+  droneAnimator: {fileID: 1418701155}
 --- !u!1 &1453944990
 GameObject:
   m_ObjectHideFlags: 0
