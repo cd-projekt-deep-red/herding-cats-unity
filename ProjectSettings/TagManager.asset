@@ -19,8 +19,8 @@ TagManager:
   - TerainDetector
   - GoalDetector
   - CatPlayerDetector
-  - 
-  - 
+  - CatFoodDetector
+  - Food
   - 
   - 
   - 

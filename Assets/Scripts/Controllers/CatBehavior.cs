@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using Random = UnityEngine.Random;
 
 public class CatBehavior : MonoBehaviour
@@ -27,13 +28,17 @@ public class CatBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (this.state == CatBehaviorState.Moving)
+        if (this.state == CatBehaviorState.Moving || this.state == CatBehaviorState.Eating)
         {
             // https://forum.unity.com/threads/rigidbody-moveposition-doesnt-stop-moving-even-after-reaching-destination.544552/#post-3591916
             Vector3 newPosition = Vector3.MoveTowards(this.transform.position, this.destination, Time.fixedDeltaTime * speed);
             this.rigidBody.MovePosition(newPosition);
-            if (((Vector2)this.transform.position - this.destination).magnitude < 0.01)
+            if (((Vector2)this.transform.position - this.destination).magnitude < 1)
             {
+                if (this.state == CatBehaviorState.Eating)
+                {
+                    StartCoroutine("EatAndCycleState");
+                }
                 this.state = CatBehaviorState.Sitting;
             }
         }
@@ -100,7 +105,10 @@ public class CatBehavior : MonoBehaviour
         {
             System.Collections.Generic.IEnumerable<CatBehaviorState> values = Enum.GetValues(typeof(CatBehaviorState))
                 .Cast<CatBehaviorState>()
-                .Where(s => s != CatBehaviorState.WalkAway && s != CatBehaviorState.RunAway);
+                .Where(s =>
+                    s != CatBehaviorState.WalkAway &&
+                    s != CatBehaviorState.RunAway &&
+                    s != CatBehaviorState.Eating);
             CatBehaviorState newState = (CatBehaviorState) values.ElementAt(Random.Range(0, values.Count()));
             if (newState == CatBehaviorState.Moving)
             {
@@ -111,9 +119,16 @@ public class CatBehavior : MonoBehaviour
         }
     }
 
+    private IEnumerator EatAndCycleState()
+    {
+        yield return new WaitForSeconds(Random.Range(5f, 5f));
+        // I'm done eating
+        StartCoroutine("CycleState");
+    }
+
     public void OnPlayerDetected(GameObject player)
     {
-        if (this.fondness <= 1 && !player.GetComponent<PlayerOne>().isCrouching)
+        if (this.fondness <= 1 && !player.GetComponent<PlayerOne>().isCrouching && this.state != CatBehaviorState.Eating)
         {
             if (this.fondness >= -10 &&
                 (this.transform.position - player.transform.position).magnitude > 2)
@@ -124,7 +139,6 @@ public class CatBehavior : MonoBehaviour
             }
             else
             {
-                print("Running away - too close");
                 StopCoroutine("CycleState");
                 this.state = CatBehaviorState.RunAway;
                 this.antiDestination = player.transform.position;
@@ -132,9 +146,11 @@ public class CatBehavior : MonoBehaviour
         }
     }
 
-    private void RunAwayFrom(GameObject gameObject)
+    public void OnFoodDetected(GameObject food)
     {
-
+        StopCoroutine("CycleState");
+        this.state = CatBehaviorState.Eating;
+        this.destination = food.transform.position;
     }
 }
 
@@ -144,5 +160,6 @@ public enum CatBehaviorState
     Sitting,
     Standing,
     WalkAway,
-    RunAway
+    RunAway,
+    Eating
 }
