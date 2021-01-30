@@ -15,14 +15,11 @@ public class UIScript : MonoBehaviour
 
       if(timeLeft <= 15.0f)
       {
-        // AAA
-        timerText.text = minutesLeft.ToString() + ":" + secondsLeft.ToString("D2") + timerString;
+        timerText.text ="<color=#df3e23>" + minutesLeft.ToString() + ":" + secondsLeft.ToString("D2") + "</color>" + timerString;
       }
       else
       {
         timerText.text = minutesLeft.ToString() + ":" + secondsLeft.ToString("D2") + timerString;
       }
-
-
     }
 }
