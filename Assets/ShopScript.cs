@@ -7,6 +7,7 @@ public class ShopScript : MonoBehaviour
 {
     [SerializeField]private TextMeshProUGUI shopkeeperText;
     [SerializeField]private string[] shopkeeperDialog;
+    [SerializeField]private AudioSource audioEmitter;
 
     public void SetShopMessage(int messageIndex)
     {

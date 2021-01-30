@@ -18,6 +18,7 @@ public class CatBehavior : MonoBehaviour
 
     private Rigidbody2D rigidBody;
     private Animator animator;
+    [SerializeField]private Animator emoter;
 
     void Start()
     {
