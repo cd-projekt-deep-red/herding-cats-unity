@@ -27,10 +27,10 @@ public class StoreController : MonoBehaviour
     //when player gets close display buy options
     private void OnTriggerEnter2D(Collider2D collision)
     {
-     //call any entry text
-
-     //display any prefabs of items in the store
-     foreach(KeyValuePair<StoreItems,int> keyValue in storeLevel)
+        //call any entry text
+        Debug.Log("Welcome to the store");
+        //display any prefabs of items in the store
+        foreach (KeyValuePair<StoreItems, int> keyValue in storeLevel)
         {
             switch (keyValue.Key)
             {
@@ -38,16 +38,18 @@ public class StoreController : MonoBehaviour
                     GameObject boxStoreItem = Instantiate(boxStorePrefab, new Vector3 { x = 0f, y = 0f, z = 0f }, Quaternion.identity);
                     boxStoreItem.transform.SetParent(store.transform, false);
                     boxStoreItem.transform.position = new Vector3 { x = 0f, y = 0f, z = 0f }; //this will be adjusted to the correcct spot
+
                     break;
                 default:
                     break;
             }
-        }
-     
-
-
+        } 
     }
 
+    public void queeryPurchase()
+    {
+
+    }
 
 
 
