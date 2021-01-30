@@ -9,21 +9,22 @@ public class DroneScript : MonoBehaviour
     [SerializeField]private Animator droneAnimator;
     public GameState gameState;
     [SerializeField] private GoalDetector goalScript;
-    
+
 
     private float timeToCycle = 0f;
 
 
-    public void SetAnimationTrigger(bool triggerState)
+    public void SetAnimationTrigger(bool triggerState, bool catsPresent)
     {
       droneAnimator.SetBool("DronePickup", triggerState);
+      droneAnimator.SetBool("CatsPresent", catsPresent);
     }
 
     void Update()
     {
       if(timeToCycle <= 0.0f)
       {
-        SetAnimationTrigger(false);
+        SetAnimationTrigger(false, false);
         timeToCycle = droneCycleTime;
       }
       else
@@ -32,7 +33,16 @@ public class DroneScript : MonoBehaviour
         UIScript.SetDroneTime(timeToCycle);
         if(timeToCycle < 3f)
         {
-          SetAnimationTrigger(true);
+          if(goalScript.catsInGoal.Count > 0)
+          {
+            // Cats in Goal
+            SetAnimationTrigger(true, true);
+          }
+          else
+          {
+            // No Cats in Goal
+            SetAnimationTrigger(true, false);
+          }
         }
       }
     }
@@ -53,7 +63,6 @@ public class DroneScript : MonoBehaviour
             Debug.Log(catsevacuated.ToString() + "cats evacuated");
             UIScript.updatePlayerMoney();
         }
-        
      }
 
 }
