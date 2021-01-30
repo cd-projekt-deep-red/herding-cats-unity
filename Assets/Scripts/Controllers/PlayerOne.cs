@@ -9,13 +9,12 @@ public class PlayerOne : MonoBehaviour
     [SerializeField] private Vector3 rightFootLocation;
     [SerializeField] private GameObject footprintPrefab;
     [SerializeField] private HorzMovementDirection playerHorzDirection;
-    [Range(-1, 1)] private float lastPlayerMovement;
-
-  
     [SerializeField] private GameObject goalGO;
 
     public Holdable heldObject;
     public float playerSpeed = 0f;
+    [Range(-1, 1)] private float lastPlayerMovement;
+    public float timestill = 0f;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -38,22 +37,26 @@ public class PlayerOne : MonoBehaviour
        
     }
 
+  
+
     private void LateUpdate()
     {
         playerSpeed = rigidbody.velocity.magnitude;
         if (playerSpeed > 2 && rigidbody.velocity.x > 0)
         {
             characterAnimator.SetBool("Moving", true);
+            characterAnimator.SetBool("Crouching", false);
             characterAnimator.SetFloat("DirX", rigidbody.velocity.x);
             playerHorzDirection = HorzMovementDirection.East;
         }
         if (playerSpeed > 2 && rigidbody.velocity.x < 0)
         {
             characterAnimator.SetBool("Moving", true);
+            characterAnimator.SetBool("Crouching", false);
             characterAnimator.SetFloat("DirX", rigidbody.velocity.x);
             playerHorzDirection = HorzMovementDirection.West;
         }
-        if (playerSpeed < 2)
+        if (playerSpeed < 2 && timestill < 1f)
         {
             // Player has slowed enough to stop moving
             characterAnimator.SetBool("Moving", false);
@@ -62,9 +65,20 @@ public class PlayerOne : MonoBehaviour
                 lastPlayerMovement = rigidbody.velocity.x;
                 characterAnimator.SetFloat("Last DirX", lastPlayerMovement);
             }
-            
+
+            timestill = timestill + Time.deltaTime;
             playerHorzDirection = HorzMovementDirection.None;
         }
+        if(playerSpeed<2 && timestill > 1f)
+        {
+            characterAnimator.SetBool("Moving", false);
+            characterAnimator.SetBool("Crouching", true);
+
+            timestill = timestill + Time.deltaTime;
+            playerHorzDirection = HorzMovementDirection.None;
+        }
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
