@@ -130,7 +130,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.1838131
+  m_Radius: 0.84
 --- !u!1 &8127649562877688434
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,8 +285,11 @@ MonoBehaviour:
   footprintPrefab: {fileID: 8572123635186947104, guid: 3c5379f102d6b445fb26806fed100a71,
     type: 3}
   playerHorzDirection: 0
+  goalGO: {fileID: 0}
   heldObject: {fileID: 0}
   playerSpeed: 0
+  isCrouching: 0
+  timestill: 0
 --- !u!95 &5071671414782279198
 Animator:
   serializedVersion: 3

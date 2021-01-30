@@ -47,7 +47,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.66
+  m_Radius: 1.78
 --- !u!114 &2291060562864360830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,8 +163,11 @@ MonoBehaviour:
   stamina: 10
   staminaRecoverSpeed: 1
   maxStamina: 10
-  speed: 1
+  speed: 1.77
   fondness: 0
+  state: 0
+  destination: {x: 0, y: 0}
+  antiDestination: {x: 0, y: 0}
 --- !u!50 &5565994771745818800
 Rigidbody2D:
   serializedVersion: 4
@@ -224,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2856dec06c4134b47906cea38e615cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breedData: {fileID: 11400000, guid: f93aa4a63ce484588b8c3367ce689e7a, type: 2}
+  breedData: {fileID: 11400000, guid: f12a3694e66814b288f61ba4838ba9de, type: 2}
   spriteRenderer: {fileID: 5565994771745818802}
   animator: {fileID: 1676161681045776430}
   breedName: 

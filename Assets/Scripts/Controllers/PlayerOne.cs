@@ -13,6 +13,7 @@ public class PlayerOne : MonoBehaviour
 
     public Holdable heldObject;
     public float playerSpeed = 0f;
+    public bool isCrouching = false;
     [Range(-1, 1)] private float lastPlayerMovement;
     public float timestill = 0f;
 
@@ -44,6 +45,7 @@ public class PlayerOne : MonoBehaviour
         playerSpeed = rigidbody.velocity.magnitude;
         if (playerSpeed > 2 && rigidbody.velocity.x > 0)
         {
+            this.isCrouching = false;
             characterAnimator.SetBool("Moving", true);
             characterAnimator.SetBool("Crouching", false);
             characterAnimator.SetFloat("DirX", rigidbody.velocity.x);
@@ -51,6 +53,7 @@ public class PlayerOne : MonoBehaviour
         }
         if (playerSpeed > 2 && rigidbody.velocity.x < 0)
         {
+            this.isCrouching = false;
             characterAnimator.SetBool("Moving", true);
             characterAnimator.SetBool("Crouching", false);
             characterAnimator.SetFloat("DirX", rigidbody.velocity.x);
@@ -72,6 +75,7 @@ public class PlayerOne : MonoBehaviour
         if(playerSpeed<2 && timestill > 5f)
         {
             timestill = 0f;
+            this.isCrouching = true;
             characterAnimator.SetBool("Moving", false);
             characterAnimator.SetBool("Crouching", true);
             timestill = timestill + Time.deltaTime;

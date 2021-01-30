@@ -14,6 +14,7 @@ public class CatBehavior : MonoBehaviour
     public CatBehaviorState state;
     public Vector2 destination;
     public Vector2 antiDestination;
+
     private Rigidbody2D rigidBody;
     private Animator animator;
 
@@ -38,8 +39,8 @@ public class CatBehavior : MonoBehaviour
         }
         else if (this.state == CatBehaviorState.WalkAway)
         {
-            this.fondness -= .1f;
-            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2)this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * speed * 2);
+            this.fondness -= .01f;
+            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2)this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * speed);
             this.rigidBody.MovePosition(newPosition);
             if (((Vector2)this.transform.position - this.antiDestination).magnitude > 2)
             {
@@ -49,7 +50,7 @@ public class CatBehavior : MonoBehaviour
         else if (this.state == CatBehaviorState.RunAway)
         {
             this.fondness -= .05f;
-            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2)this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * speed * 5);
+            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2)this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * speed * 3);
             this.rigidBody.MovePosition(newPosition);
             if (((Vector2)this.transform.position - this.antiDestination).magnitude > 5)
             {
@@ -112,18 +113,28 @@ public class CatBehavior : MonoBehaviour
 
     public void OnPlayerDetected(GameObject player)
     {
-        if (this.fondness <= 1 && this.fondness >= -10)
+        if (this.fondness <= 1 && !player.GetComponent<PlayerOne>().isCrouching)
         {
-            StopCoroutine("CycleState");
-            this.state = CatBehaviorState.WalkAway;
-            this.antiDestination = player.transform.position;
+            if (this.fondness >= -10 &&
+                (this.transform.position - player.transform.position).magnitude > 2)
+            {
+                StopCoroutine("CycleState");
+                this.state = CatBehaviorState.WalkAway;
+                this.antiDestination = player.transform.position;
+            }
+            else
+            {
+                print("Running away - too close");
+                StopCoroutine("CycleState");
+                this.state = CatBehaviorState.RunAway;
+                this.antiDestination = player.transform.position;
+            }
         }
-        else if (this.fondness < -10)
-        {
-            StopCoroutine("CycleState");
-            this.state = CatBehaviorState.RunAway;
-            this.antiDestination = player.transform.position;
-        }
+    }
+
+    private void RunAwayFrom(GameObject gameObject)
+    {
+
     }
 }
 
