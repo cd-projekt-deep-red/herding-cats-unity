@@ -11,7 +11,7 @@ public class DroneScript : MonoBehaviour
     [SerializeField] private GoalDetector goalScript;
 
     private float timeToCycle = 0f;
-    
+
 
     public void SetAnimationTrigger(bool triggerState)
     {
@@ -35,9 +35,6 @@ public class DroneScript : MonoBehaviour
         }
       }
     }
-
-    
-
 
     public void droneTakeoff()
     {
