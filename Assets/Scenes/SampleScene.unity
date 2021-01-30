@@ -1814,7 +1814,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -20550,6 +20550,7 @@ MonoBehaviour:
   moneyText: {fileID: 1379385348}
   valueChangeText: {fileID: 309458314}
   paypurrAnimation: {fileID: 94269263}
+  gameState: {fileID: 0}
 --- !u!1 &1355906370
 GameObject:
   m_ObjectHideFlags: 0
@@ -20731,7 +20732,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 120
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ae6f56db114504332849d8cac7e51281, type: 2}
   m_sharedMaterial: {fileID: 7663255537847417162, guid: ae6f56db114504332849d8cac7e51281,
@@ -20873,11 +20874,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a5505a9725544578cc9c2e8d4b3786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droneCycleTime: 60
+  droneCycleTime: 30
   UIScript: {fileID: 1354315298}
   droneAnimator: {fileID: 1418701155}
-  gameState: {fileID: 0}
-  goalScript: {fileID: 0}
+  gameState: {fileID: 11400000, guid: bcb21443b7016bc4b93d05d21a90272d, type: 2}
+  goalScript: {fileID: 1355906372}
 --- !u!1 &1453944990
 GameObject:
   m_ObjectHideFlags: 0

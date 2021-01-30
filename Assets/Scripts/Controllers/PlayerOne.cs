@@ -56,7 +56,7 @@ public class PlayerOne : MonoBehaviour
             characterAnimator.SetFloat("DirX", rigidbody.velocity.x);
             playerHorzDirection = HorzMovementDirection.West;
         }
-        if (playerSpeed < 2 && timestill < 1f)
+        if (playerSpeed < 2 && timestill < 5f)
         {
             // Player has slowed enough to stop moving
             characterAnimator.SetBool("Moving", false);
@@ -69,11 +69,11 @@ public class PlayerOne : MonoBehaviour
             timestill = timestill + Time.deltaTime;
             playerHorzDirection = HorzMovementDirection.None;
         }
-        if(playerSpeed<2 && timestill > 1f)
+        if(playerSpeed<2 && timestill > 5f)
         {
+            timestill = 0f;
             characterAnimator.SetBool("Moving", false);
             characterAnimator.SetBool("Crouching", true);
-
             timestill = timestill + Time.deltaTime;
             playerHorzDirection = HorzMovementDirection.None;
         }

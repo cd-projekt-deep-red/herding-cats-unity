@@ -9,6 +9,7 @@ public class UIScript : MonoBehaviour
     [SerializeField]private TextMeshProUGUI moneyText;
     [SerializeField]private TextMeshProUGUI valueChangeText;
     [SerializeField]private Animator paypurrAnimation;
+    [SerializeField] private GameState gameState;
 
     private float playerCash = 0f;
 
@@ -28,18 +29,20 @@ public class UIScript : MonoBehaviour
       }
     }
 
-    public void SetPlayerMoney(float cashValue)
+    public void updatePlayerMoney()
     {
-      playerCash = playerCash + cashValue;
-      if(cashValue >= 0)
+      
+      if(gameState.playerMoney >= playerCash )
       {
           // Add Cash
-          valueChangeText.text = "<color=#59c135>" + cashValue.ToString();
+          valueChangeText.text = "<color=#59c135>" + (gameState.playerMoney - playerCash).ToString();
+            playerCash = gameState.playerMoney;
       }
       else
       {
         // Minus Cash
-        valueChangeText.text = "<color=#df3e23>" + cashValue.ToString();
+        valueChangeText.text = "<color=#df3e23>" + (gameState.playerMoney - playerCash).ToString();
+            playerCash = gameState.playerMoney;
       }
 
       paypurrAnimation.SetTrigger("Count Change");
