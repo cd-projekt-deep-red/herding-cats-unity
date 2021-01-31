@@ -28524,6 +28524,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3571499549044993864, guid: 7742c10bd3c534c1fb25ef0bd51657e7,
+        type: 3}
+      propertyPath: m_text
+      value: Place Cats In Extraction Point
+      objectReference: {fileID: 0}
     - target: {fileID: 3571499549269334279, guid: 7742c10bd3c534c1fb25ef0bd51657e7,
         type: 3}
       propertyPath: m_Name
