@@ -386,6 +386,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 34102466a8e324917b51c3e9d168a6fa, type: 3}
   - {fileID: 8300000, guid: 12e24678c1584409abd8639848594586, type: 3}
   - {fileID: 8300000, guid: 6ab9c25c46a5f440eac9abe04f30ff13, type: 3}
+  happyMeow:
+  - {fileID: 8300000, guid: 21d2472d275cc48a8b04707ffb587eb6, type: 3}
+  - {fileID: 8300000, guid: b736e1cdbce234af2b7c88da832c8d71, type: 3}
+  - {fileID: 8300000, guid: 27df42c4bce714cdd8b3950e5ad98be1, type: 3}
+  - {fileID: 8300000, guid: ab610c97e296549abbaeeda76bbd040b, type: 3}
+  - {fileID: 8300000, guid: b256ca2e3ff2648b286746187cdbf8e3, type: 3}
 --- !u!50 &5565994771745818800
 Rigidbody2D:
   serializedVersion: 4
@@ -537,7 +543,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

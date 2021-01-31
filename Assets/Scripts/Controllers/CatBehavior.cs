@@ -26,6 +26,7 @@ public class CatBehavior : MonoBehaviour
     [SerializeField]private RectTransform emoteTransform;
     [SerializeField]private AudioSource audioSource;
     [SerializeField]private AudioClip[] angryMeow;
+    [SerializeField]private AudioClip[] happyMeow;
     private SpriteRenderer spriteRenderer;
     private float dustSpawned = 0f;
     private Vector3 previousPosition;
@@ -154,6 +155,13 @@ public class CatBehavior : MonoBehaviour
                 if(isBeingChased)
                 {
                   isBeingChased = false;
+                }
+                // Random chance to meow
+                if(Random.value > 0.9992)
+                {
+                  audioSource.pitch = Random.Range(0.75f, 1.25f);
+                  audioSource.volume = Random.Range(0.125f, 0.3f);
+                  audioSource.PlayOneShot(happyMeow[Random.Range(0, happyMeow.Length)]);
                 }
                 break;
             case CatBehaviorState.Standing:
