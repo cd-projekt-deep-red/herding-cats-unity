@@ -4,7 +4,7 @@
 
 ## Build
 Requires Unity 2019.4.14f1.
-Project is configured to build for WebGL.
+Configure project to build for WebGL.
 
 ## Deploy
 Builds are (manually) published and deployed by GitHub pages through another repository: https://github.com/cd-projekt-deep-red/herding-cats-webgl.
