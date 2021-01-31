@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: GameState
   m_EditorClassIdentifier: Assembly-CSharp::GameState
-  goalScript: {fileID: 0}
+  playerMoney: 0

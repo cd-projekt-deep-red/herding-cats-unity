@@ -15,27 +15,58 @@ public class StoreController : MonoBehaviour
     [SerializeField]private AudioClip[] shopkeeperDialogSFX;
     [SerializeField]private AudioSource audioEmitter;
     [SerializeField]private Animator shopAnimatior;
+    [SerializeField] private UIScript uiScript;
+    [SerializeField] private GoalUI goalUIScript;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
-    private bool newitems = false;
+    private bool newitems = true;
+    private bool newItemsChatUpdate = true;
     // Start is called before the first frame update
     void Start()
     {
         //items store to start
         storeLevel.Add(StoreItems.Box, 1);
 
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!spriteRenderer.isVisible)
+        {
+            
+            if(newitems == true)
+            {
+                newitems = false;
+                //update store prefabs
+                foreach (KeyValuePair<StoreItems, int> keyValue in storeLevel)
+                {
+                    switch (keyValue.Key)
+                    {
+                        case StoreItems.Box:
+                            GameObject boxStoreItem = Instantiate(boxStorePrefab, new Vector3 { x = 0f, y = 0f, z = 0f }, Quaternion.identity);
+                            boxStoreItem.transform.SetParent(store.transform, false);
+                            boxStoreItem.transform.localPosition = new Vector3 { x = -2f, y = -1.5f, z = 0f }; //this will be adjusted to the correcct spot
 
+                            break;
+                        default:
+                            break;
+                    }
+                }
+               
+            }
+
+        }
     }
 
     //when player gets close display buy options
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //call any entry text
-        if (!newitems)
+        if (!newItemsChatUpdate)
         {
             hello();
         }
@@ -43,25 +74,20 @@ public class StoreController : MonoBehaviour
         {
             helloNewItems();
         }
-        //display any prefabs of items in the store
-        foreach (KeyValuePair<StoreItems, int> keyValue in storeLevel)
-        {
-            switch (keyValue.Key)
-            {
-                case StoreItems.Box:
-                    GameObject boxStoreItem = Instantiate(boxStorePrefab, new Vector3 { x = 0f, y = 0f, z = 0f }, Quaternion.identity);
-                    boxStoreItem.transform.SetParent(store.transform, false);
-                    boxStoreItem.transform.localPosition = new Vector3 { x = -2f, y = -1.5f, z = 0f }; //this will be adjusted to the correcct spot
 
-                    break;
-                default:
-                    break;
-            }
-        }
+        goalUIScript.ToggleGoalDisplay(true);
     }
 
-    public void itemPurchased()
+    private void OnTriggerExit2D(Collider2D collision)
     {
+        goalUIScript.ToggleGoalDisplay(false);
+    }
+
+    public void itemPurchased(float cost)
+    {
+        gameState.playerMoney = gameState.playerMoney - cost;
+        uiScript.updatePlayerMoney();
+
       shopAnimatior.SetBool("CanPurchase", true);
       shopAnimatior.SetTrigger("PurchaseMade");
     }
@@ -84,7 +110,7 @@ public class StoreController : MonoBehaviour
       shopAnimatior.SetFloat("New Items", 1.0f);
       shopAnimatior.SetTrigger("Welcome");
 
-      newitems = false;
+        newItemsChatUpdate = false;
     }
 
     public void SetShopMessage(int messageIndex)
