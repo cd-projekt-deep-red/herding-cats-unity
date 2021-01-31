@@ -20,6 +20,7 @@ public class StoreController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private bool newitems = true;
+    private bool newItemsChatUpdate = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +37,10 @@ public class StoreController : MonoBehaviour
     {
         if (!spriteRenderer.isVisible)
         {
-            if(newitems = true)
+            
+            if(newitems == true)
             {
+                newitems = false;
                 //update store prefabs
                 foreach (KeyValuePair<StoreItems, int> keyValue in storeLevel)
                 {
@@ -53,7 +56,7 @@ public class StoreController : MonoBehaviour
                             break;
                     }
                 }
-                newitems = false;
+               
             }
 
         }
@@ -63,7 +66,7 @@ public class StoreController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //call any entry text
-        if (!newitems)
+        if (!newItemsChatUpdate)
         {
             hello();
         }
@@ -107,7 +110,7 @@ public class StoreController : MonoBehaviour
       shopAnimatior.SetFloat("New Items", 1.0f);
       shopAnimatior.SetTrigger("Welcome");
 
-      newitems = false;
+        newItemsChatUpdate = false;
     }
 
     public void SetShopMessage(int messageIndex)
