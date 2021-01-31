@@ -20,7 +20,7 @@ public class CatBehavior : MonoBehaviour
     private Animator animator;
     [SerializeField]private Animator emoter;
     [SerializeField]private GameObject dustPrefab;
-    [SerializeField]private float dustSpawnDelay = 0.02f;
+    [SerializeField]private float dustSpawnDelay = 0.05f;
     private SpriteRenderer spriteRenderer;
     private float dustSpawned = 0f;
     private Vector3 previousPosition;
