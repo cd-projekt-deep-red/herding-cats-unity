@@ -1,5 +1,7 @@
 # herding-cats-unity
 
+[**Play the game!**](https://cd-projekt-deep-red.github.io/herding-cats-webgl/)
+
 ## Build
 Requires Unity 2019.4.14f1.
 Project is configured to build for WebGL.
