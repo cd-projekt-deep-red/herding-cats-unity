@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class MenuSceneController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]private AudioSource audioSource;
+    [SerializeField]private AudioClip[] audioClips;
+
+    public void StartGame()
     {
-        //potentially should setup gamestate here
-        
+      UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlaySound(int soundIndex)
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
-        }
-        
+      audioSource.PlayOneShot(audioClips[soundIndex]);
     }
 }
