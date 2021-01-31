@@ -19,12 +19,14 @@ public class CatBehavior : MonoBehaviour
     private Rigidbody2D rigidBody;
     private Animator animator;
     [SerializeField]private Animator emoter;
+    SpriteRenderer spriteRenderer;
 
     void Start()
     {
         this.rigidBody = GetComponent<Rigidbody2D>();
         this.animator = GetComponent<Animator>();
         StartCoroutine("CycleState");
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -65,6 +67,9 @@ public class CatBehavior : MonoBehaviour
                 StartCoroutine("CycleState");
             }
         }
+
+
+        spriteRenderer.sortingOrder = (int)(-1 * transform.position.y + 150f);
     }
 
     private void LateUpdate()
