@@ -18,7 +18,7 @@ public class InteractionDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Jump"))
         {
             if (this.closestInteractable == null && this.player.heldObject != null)
             {
