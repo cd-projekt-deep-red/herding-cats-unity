@@ -23,7 +23,7 @@ public class StoreItemInteractable : Interactable
             
            if(store.gameState.playerMoney >= costOfItem)//need to look at how to get money of item
             {
-                store.itemPurchased();
+                store.itemPurchased(costOfItem);
                 GameObject realObject = Instantiate(itemPrefab, new Vector3 { x = 0f, y = 0f, z = 0f }, Quaternion.identity);
                 holdable = realObject.GetComponent<Holdable>();
                 holdable.Interact(player);

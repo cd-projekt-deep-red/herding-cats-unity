@@ -22776,6 +22776,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3d0bb42ebd4d54b269949fe4e9d07cc3, type: 3}
   audioEmitter: {fileID: 1554884567}
   shopAnimatior: {fileID: 1554884566}
+  uiScript: {fileID: 1354315298}
+  goalUIScript: {fileID: 273930835}
+  spriteRenderer: {fileID: 1554884564}
 --- !u!1 &1562225755
 GameObject:
   m_ObjectHideFlags: 0

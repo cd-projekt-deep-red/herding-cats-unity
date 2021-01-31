@@ -6,7 +6,7 @@ public class CatInteraction : Holdable
     private CatBehavior catBehavior;
     private new Rigidbody2D rigidbody2D;
 
-    private void Start()
+    private void Awake()
     {
         this.animator = GetComponent<Animator>();
         this.catBehavior = GetComponent<CatBehavior>();
@@ -15,9 +15,7 @@ public class CatInteraction : Holdable
 
     public override void OnPickUp()
     {
-        this.animator = GetComponent<Animator>();
-        this.catBehavior = GetComponent<CatBehavior>();
-        this.rigidbody2D = GetComponent<Rigidbody2D>();
+   
 
         this.animator.SetBool("MoveRight", false);
         this.animator.SetBool("MoveLeft", false);
