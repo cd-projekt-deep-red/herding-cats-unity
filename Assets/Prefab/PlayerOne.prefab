@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5493977083654546274}
   - component: {fileID: 1273047324232633376}
   - component: {fileID: 4265436646370977509}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: TerainDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971254729438734100}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d34d2d76f00fbbf41b62cf077e1ab0cc, type: 3}
   m_Name: 
