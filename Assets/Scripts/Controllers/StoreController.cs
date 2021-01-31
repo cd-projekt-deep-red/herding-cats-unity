@@ -5,7 +5,7 @@ using UnityEngine;
 public class StoreController : MonoBehaviour
 {
     Dictionary<StoreItems, int> storeLevel = new Dictionary<StoreItems, int>();
-    [SerializeField] private GameState gameState;
+    public GameState gameState;
 
     [SerializeField] private GameObject boxStorePrefab;
     [SerializeField] private GameObject store;
@@ -37,7 +37,7 @@ public class StoreController : MonoBehaviour
                 case StoreItems.Box:
                     GameObject boxStoreItem = Instantiate(boxStorePrefab, new Vector3 { x = 0f, y = 0f, z = 0f }, Quaternion.identity);
                     boxStoreItem.transform.SetParent(store.transform, false);
-                    boxStoreItem.transform.position = new Vector3 { x = 0f, y = 0f, z = 0f }; //this will be adjusted to the correcct spot
+                    boxStoreItem.transform.localPosition = new Vector3 { x = -2f, y = -1.5f, z = 0f }; //this will be adjusted to the correcct spot
 
                     break;
                 default:
@@ -46,9 +46,14 @@ public class StoreController : MonoBehaviour
         } 
     }
 
-    public void queeryPurchase()
+    public void itemPurchased()
     {
 
+    }
+
+    public void notEnoughMoney()
+    {
+        Debug.Log("ya dont have enough money scrub");
     }
 
 

@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5877171844734227306}
   - component: {fileID: 1343441300427522527}
-  m_Layer: 0
+  - component: {fileID: 5973589902570393924}
+  - component: {fileID: 5162807011224625294}
+  m_Layer: 17
   m_Name: BoxStorePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,14 +72,57 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1946108674545087605, guid: 870e123583ad3417486228f7ea5f525f,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5454545, y: 1.1818181}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5973589902570393924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7116013132124650302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5c79e68cd7b86479d52f8e893402f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 5565994771745818801, guid: c1f4e4ec67475e449bc415366b74ff00,
+    type: 3}
+  store: {fileID: 0}
+  costOfItem: 10
+--- !u!61 &5162807011224625294
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7116013132124650302}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000023841858, y: -0.08199167}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.5454545, y: 1.1818181}
+    newSize: {x: 1.5454545, y: 1.1818181}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0350108, y: 0.94495296}
+  m_EdgeRadius: 0
