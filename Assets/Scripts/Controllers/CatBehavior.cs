@@ -240,12 +240,15 @@ public class CatBehavior : MonoBehaviour
         }
     }
 
-    public void OnFoodDetected(GameObject food)
+    public void OnFoodDetected(Food food)
     {
-        StopCoroutine("CycleState");
-        this.state = CatBehaviorState.MovingToFood;
-        this.destination = food.transform.position;
-        StartCoroutine("EatAndCycleState");
+        if (!food.isBeingHeld)
+        {
+            StopCoroutine("CycleState");
+            this.state = CatBehaviorState.MovingToFood;
+            this.destination = food.transform.position;
+            StartCoroutine("EatAndCycleState");
+        }
     }
 }
 
