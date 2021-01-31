@@ -62,14 +62,14 @@ public class StoreController : MonoBehaviour
 
     public void itemPurchased()
     {
-      shopAnimatior.SetBool("CanPurchase", true);
-      shopAnimatior.SetTrigger("PurchaseMade");
+      // shopAnimatior.SetBool("CanPurchase", true);
+      // shopAnimatior.SetTrigger("PurchaseMade");
     }
 
     public void notEnoughMoney()
     {
-      shopAnimatior.SetBool("CanPurchase", false);
-      shopAnimatior.SetTrigger("PurchaseMade");
+      // shopAnimatior.SetBool("CanPurchase", false);
+      // shopAnimatior.SetTrigger("PurchaseMade");
     }
 
 
@@ -89,6 +89,7 @@ public class StoreController : MonoBehaviour
 
     public void SetShopMessage(int messageIndex)
     {
+      Debug.Log(messageIndex);
       shopkeeperText.text = "    " + shopkeeperDialog[messageIndex] + "\n/";
       audioEmitter.PlayOneShot(shopkeeperDialogSFX[messageIndex]);
     }
