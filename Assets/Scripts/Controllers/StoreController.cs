@@ -9,7 +9,7 @@ public class StoreController : MonoBehaviour
 
     [SerializeField] private GameObject boxStorePrefab;
     [SerializeField] private GameObject store;
-
+    private bool newitems = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +28,14 @@ public class StoreController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //call any entry text
-        Debug.Log("Welcome to the store");
+        if (!newitems)
+        {
+            hello();
+        }
+        else
+        {
+            helloNewItems();
+        }
         //display any prefabs of items in the store
         foreach (KeyValuePair<StoreItems, int> keyValue in storeLevel)
         {
@@ -53,7 +60,20 @@ public class StoreController : MonoBehaviour
 
     public void notEnoughMoney()
     {
-        Debug.Log("ya dont have enough money scrub");
+        
+    }
+
+
+    public void hello()
+    {
+
+    }
+
+    public void helloNewItems()
+    {
+
+
+        newitems = false;
     }
 
 
