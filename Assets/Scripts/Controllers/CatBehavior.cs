@@ -19,7 +19,11 @@ public class CatBehavior : MonoBehaviour
     private Rigidbody2D rigidBody;
     private Animator animator;
     [SerializeField]private Animator emoter;
-    SpriteRenderer spriteRenderer;
+    [SerializeField]private GameObject dustPrefab;
+    [SerializeField]private float dustSpawnDelay = 0.02f;
+    private SpriteRenderer spriteRenderer;
+    private float dustSpawned = 0f;
+    private Vector3 previousPosition;
 
     void Start()
     {
@@ -62,6 +66,23 @@ public class CatBehavior : MonoBehaviour
             this.fondness -= .05f;
             Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2)this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * speed * 3);
             this.rigidBody.MovePosition(newPosition);
+            // Add dust at interval
+            if(dustSpawned <= 0.0f)
+            {
+              dustSpawned = dustSpawnDelay;
+              // Spawn dust
+              Vector3 dustLocation = this.gameObject.transform.position + new Vector3(0.0f, -.375f, 0f);
+              Vector2 fakeVelocity = this.gameObject.transform.position - previousPosition;
+              GameObject dustParticle = Instantiate(dustPrefab, dustLocation, Quaternion.identity);
+              if(fakeVelocity.x <= 0) {
+                dustParticle.transform.localScale = new Vector3(-1f, 1f, 1f);
+              }
+            }
+            else
+            {
+              dustSpawned = dustSpawned - Time.fixedDeltaTime;
+            }
+
             if (((Vector2)this.transform.position - this.antiDestination).magnitude > 5)
             {
                 StartCoroutine("CycleState");
@@ -70,6 +91,8 @@ public class CatBehavior : MonoBehaviour
 
 
         spriteRenderer.sortingOrder = (int)(-1 * transform.position.y + 150f);
+
+        previousPosition = this.gameObject.transform.position;
     }
 
     private void LateUpdate()

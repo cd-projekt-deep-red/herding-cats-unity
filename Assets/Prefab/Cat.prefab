@@ -374,6 +374,9 @@ MonoBehaviour:
   destination: {x: 0, y: 0}
   antiDestination: {x: 0, y: 0}
   emoter: {fileID: 4233739120493138061}
+  dustPrefab: {fileID: 1486585070367029167, guid: 165a8a5346b4d40ebbf398960a1beedd,
+    type: 3}
+  dustSpawnDelay: 0.5
 --- !u!50 &5565994771745818800
 Rigidbody2D:
   serializedVersion: 4
