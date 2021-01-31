@@ -10,6 +10,8 @@ public class PlayerOne : MonoBehaviour
     [SerializeField] private GameObject footprintPrefab;
     [SerializeField] private HorzMovementDirection playerHorzDirection;
     [SerializeField] private GameObject goalGO;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] grassSteps;
 
     public Holdable heldObject;
     public float playerSpeed = 0f;
@@ -35,10 +37,10 @@ public class PlayerOne : MonoBehaviour
         //need to calculate layer based on transform.y
         spriteRenderer.sortingOrder = (int) (-1* transform.position.y + 150f);
 
-       
+
     }
 
-  
+
 
     private void LateUpdate()
     {
@@ -150,6 +152,13 @@ public class PlayerOne : MonoBehaviour
         this.heldObject.transform.localPosition = Vector3.up * -0.25f;
         this.heldObject.transform.SetParent(null);
         this.heldObject = null;
+    }
+
+    public void PlayerStep()
+    {
+      // audioSource.pitch = Random.Range(0.5f, 1.25f);
+      // audioSource.volume = Random.Range(0.25f, 0.375f);
+      // audioSource.PlayOneShot(grassSteps[Random.Range(0, grassSteps.Length)]);
     }
 
     public enum HorzMovementDirection {

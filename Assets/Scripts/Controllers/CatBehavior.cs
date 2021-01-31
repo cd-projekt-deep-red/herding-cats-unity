@@ -15,6 +15,7 @@ public class CatBehavior : MonoBehaviour
     public CatBehaviorState state;
     public Vector2 destination;
     public Vector2 antiDestination;
+    public bool isBeingChased = false;
 
     private Rigidbody2D rigidBody;
     private Animator animator;
@@ -23,9 +24,11 @@ public class CatBehavior : MonoBehaviour
     [SerializeField]private float dustSpawnDelay = 0.06f;
     [SerializeField]private float dustSpawnVariance = 0.03f;
     [SerializeField]private RectTransform emoteTransform;
+    [SerializeField]private AudioSource audioSource;
+    [SerializeField]private AudioClip[] angryMeow;
     private SpriteRenderer spriteRenderer;
     private float dustSpawned = 0f;
-    private Vector2 previousPosition;
+    private Vector3 previousPosition;
 
     void Start()
     {
@@ -53,6 +56,12 @@ public class CatBehavior : MonoBehaviour
                     this.state = CatBehaviorState.Eating;
                 }
             }
+
+            // Reset the being chased bool
+            if(isBeingChased)
+            {
+              isBeingChased = false;
+            }
         }
         else if (this.state == CatBehaviorState.WalkAway)
         {
@@ -66,6 +75,17 @@ public class CatBehavior : MonoBehaviour
         }
         else if (this.state == CatBehaviorState.RunAway)
         {
+            // If the cat has just started being chased
+            if(!isBeingChased)
+            {
+              isBeingChased = true;
+              // 75% chance to make a noise
+              if(Random.value > 0.25)
+              {
+                audioSource.pitch = Random.Range(0.9f, 2.0f);
+                audioSource.PlayOneShot(angryMeow[Random.Range(0, angryMeow.Length-1)]);
+              }
+            }
             this.fondness -= .05f;
             var runDirection = (currentPosition - this.antiDestination).normalized;
             Vector2 newPosition = Vector2.MoveTowards(currentPosition, currentPosition + runDirection * 10, Time.fixedDeltaTime * speed * 3);
@@ -77,7 +97,7 @@ public class CatBehavior : MonoBehaviour
               dustSpawned = Random.Range(dustSpawnDelay - dustSpawnVariance, dustSpawnDelay + dustSpawnVariance);
               // Spawn dust
               Vector3 dustLocation = this.gameObject.transform.position + new Vector3(0.0f, -.375f, 0f);
-              Vector2 fakeVelocity = this.gameObject.transform.position - previousPosition;
+              Vector3 fakeVelocity = this.gameObject.transform.position - previousPosition;
               GameObject dustParticle = Instantiate(dustPrefab, dustLocation, Quaternion.identity);
               if(fakeVelocity.x <= 0) {
                 dustParticle.transform.localScale = new Vector3(-1f, 1f, 1f);
@@ -130,11 +150,21 @@ public class CatBehavior : MonoBehaviour
                 this.animator.SetBool("MoveRight", false);
                 this.animator.SetBool("MoveLeft", false);
                 this.animator.SetBool("Sit", true);
+                // Reset the being chased bool
+                if(isBeingChased)
+                {
+                  isBeingChased = false;
+                }
                 break;
             case CatBehaviorState.Standing:
                 this.animator.SetBool("MoveRight", false);
                 this.animator.SetBool("MoveLeft", false);
                 this.animator.SetBool("Sit", false);
+                // Reset the being chased bool
+                if(isBeingChased)
+                {
+                  isBeingChased = false;
+                }
                 break;
             default:
                 break;

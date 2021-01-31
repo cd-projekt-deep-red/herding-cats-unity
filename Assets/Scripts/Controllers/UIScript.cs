@@ -10,6 +10,8 @@ public class UIScript : MonoBehaviour
     [SerializeField]private TextMeshProUGUI valueChangeText;
     [SerializeField]private Animator paypurrAnimation;
     [SerializeField] private GameState gameState;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] moneyAdd;
 
     private float playerCash = 0f;
 
@@ -35,8 +37,9 @@ public class UIScript : MonoBehaviour
       if(gameState.playerMoney >= playerCash )
       {
           // Add Cash
-          valueChangeText.text = "<color=#59c135>" + (gameState.playerMoney - playerCash).ToString();
-            playerCash = gameState.playerMoney;
+          valueChangeText.text = "<color=#59c135>+" + (gameState.playerMoney - playerCash).ToString();
+          playerCash = gameState.playerMoney;
+          audioSource.PlayOneShot(moneyAdd[Random.Range(0, moneyAdd.Length)]);
       }
       else
       {

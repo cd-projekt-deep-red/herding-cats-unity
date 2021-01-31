@@ -9,6 +9,8 @@ public class DroneScript : MonoBehaviour
     [SerializeField]private Animator droneAnimator;
     public GameState gameState;
     [SerializeField] private GoalDetector goalScript;
+    [SerializeField] private AudioSource cameraSFX;
+    [SerializeField] private AudioClip droneSting;
 
 
     private float timeToCycle = 0f;
@@ -52,17 +54,22 @@ public class DroneScript : MonoBehaviour
         if (goalScript.catsInGoal.Count != 0)
         {
             int catsevacuated = 0;
-           
+
             gameState.catsEvacuated(goalScript.catsInGoal);
-            
+
             for (int i = goalScript.catsInGoal.Count -1 ; i >= 0; i--)
             {
                 catsevacuated++;
                 Destroy(goalScript.catsInGoal[i]);
             }
-            
+
             UIScript.updatePlayerMoney();
         }
+     }
+
+     public void droneArrival()
+     {
+       cameraSFX.PlayOneShot(droneSting);
      }
 
 }
