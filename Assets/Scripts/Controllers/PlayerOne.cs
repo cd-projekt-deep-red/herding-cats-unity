@@ -55,7 +55,7 @@ public class PlayerOne : MonoBehaviour
         rigidbody.AddForce(movement);
 
         //need to calculate layer based on transform.y
-        spriteRenderer.sortingOrder = (int) (-1* transform.position.y + 151f);
+        spriteRenderer.sortingOrder = (int) (-1* transform.position.y + 152f);
 
 
     }
