@@ -562,7 +562,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &185995040
 GameObject:
@@ -625,7 +625,7 @@ Transform:
   - {fileID: 1355906371}
   - {fileID: 1052298867}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &273930833
 GameObject:
@@ -1038,7 +1038,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -1602,7 +1602,7 @@ Transform:
   - {fileID: 1248340061}
   - {fileID: 1032919114}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &913053963
 GameObject:
@@ -1879,7 +1879,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &946684351
 PolygonCollider2D:
@@ -25139,7 +25139,7 @@ RectTransform:
   - {fileID: 308448842}
   - {fileID: 94269262}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -25577,7 +25577,7 @@ Transform:
   m_Children:
   - {fileID: 185995041}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1418701157
 MonoBehaviour:
@@ -25599,7 +25599,7 @@ MonoBehaviour:
   cameraSFX: {fileID: 519420034}
   droneSting: {fileID: 8300000, guid: 2b935c7ee962c4052b8f17a50705fd45, type: 3}
   catSpawner: {fileID: 946684349}
-  timeToCycle: 0
+  timeToCycle: 30
 --- !u!1 &1428503991
 GameObject:
   m_ObjectHideFlags: 0
@@ -26545,7 +26545,7 @@ Transform:
   - {fileID: 1334488450}
   - {fileID: 1885524819}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1554884564
 SpriteRenderer:
@@ -26919,7 +26919,7 @@ Transform:
   - {fileID: 1610961712}
   - {fileID: 688828935}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1610961711
 GameObject:
@@ -27014,7 +27014,7 @@ RectTransform:
   m_Children:
   - {fileID: 1915398903}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -27260,7 +27260,7 @@ PrefabInstance:
     - target: {fileID: 8127649562877688438, guid: a1a73f0c32bbe954fad9529ca52a37ac,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8127649562877688438, guid: a1a73f0c32bbe954fad9529ca52a37ac,
         type: 3}
@@ -27455,7 +27455,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1683261199
 GameObject:
@@ -28200,41 +28200,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942361885}
   m_CullTransparentMesh: 0
---- !u!1 &1967367726 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3696651205665050052, guid: ccf965b4fb66d1a4cbb658bef3bc1cdc,
-    type: 3}
-  m_PrefabInstance: {fileID: 3696651206448123676}
-  m_PrefabAsset: {fileID: 0}
---- !u!60 &1967367727
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967367726}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.5454545, y: 1.1818181}
-    newSize: {x: 1.5454545, y: 1.1818181}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.012736797, y: 0.574209}
-      - {x: -0.51553446, y: 0.29146913}
-      - {x: -0.007873476, y: 0.0363034}
-      - {x: 0.5032283, y: 0.30825472}
 --- !u!1 &2033197464
 GameObject:
   m_ObjectHideFlags: 0

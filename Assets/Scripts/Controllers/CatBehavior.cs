@@ -140,7 +140,7 @@ public class CatBehavior : MonoBehaviour
                     this.animator.SetBool("MoveLeft", false);
                     this.animator.SetBool("Sit", false);
                 }
-                else
+                else if (this.velocity.x < 0)
                 {
                     this.animator.SetBool("MoveRight", false);
                     this.animator.SetBool("MoveLeft", true);
