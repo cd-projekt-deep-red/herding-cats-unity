@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class CatFoodDetector : MonoBehaviour
 {
@@ -10,6 +11,31 @@ public class CatFoodDetector : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        this.cat.OnFoodDetected(collision.gameObject);
+        var food = collision.gameObject.GetComponent<Food>();
+        if (food == null)
+        {
+            throw new InvalidOperationException("Found object without Food script.");
+        }
+        this.cat.OnFoodDetected(food);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        var food = collision.gameObject.GetComponent<Food>();
+        if (food == null)
+        {
+            throw new InvalidOperationException("Found object without Food script.");
+        }
+        this.cat.OnFoodDetected(food);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        var food = collision.gameObject.GetComponent<Food>();
+        if (food == null)
+        {
+            throw new InvalidOperationException("Found object without Food script.");
+        }
+        this.cat.OnFoodRemoved(food);
     }
 }

@@ -15,8 +15,6 @@ public class CatInteraction : Holdable
 
     public override void OnPickUp()
     {
-   
-
         this.animator.SetBool("MoveRight", false);
         this.animator.SetBool("MoveLeft", false);
         this.animator.SetBool("Sit", true);

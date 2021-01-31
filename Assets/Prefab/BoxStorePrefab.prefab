@@ -160,7 +160,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 3696651205665050052, guid: ccf965b4fb66d1a4cbb658bef3bc1cdc,
     type: 3}
   store: {fileID: 0}
-  costOfItem: 10
+  costOfItem: 50
 --- !u!61 &5162807011224625294
 BoxCollider2D:
   m_ObjectHideFlags: 0

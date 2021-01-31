@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -33,7 +34,12 @@ public class InteractionDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        this.interactables.Add(collision.GetComponent<Interactable>());
+        var interactable = collision.GetComponent<Interactable>();
+        if (interactable == null)
+        {
+            throw new InvalidOperationException("Encountered object without an Interactable script.");
+        }
+        this.interactables.Add(interactable);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

@@ -10,6 +10,8 @@ public class StoreController : MonoBehaviour
     public GameState gameState;
 
     [SerializeField] private GameObject boxStorePrefab;
+    [SerializeField] private GameObject fenceStorePrefab;
+    [SerializeField] private GameObject foodStorePrefab;
     [SerializeField] private GameObject store;
     [SerializeField]private TextMeshProUGUI shopkeeperText;
     [SerializeField]private string[] shopkeeperDialog;
@@ -29,6 +31,12 @@ public class StoreController : MonoBehaviour
     {
         //items store to start
         storeLevel.Add(StoreItems.Box, 1);
+        storeLevel.Add(StoreItems.Fence, 1);
+        storeLevel.Add(StoreItems.Food, 1);
+
+
+
+
     }
 
     // Update is called once per frame
@@ -51,6 +59,19 @@ public class StoreController : MonoBehaviour
                             boxStoreItem.transform.localPosition = new Vector3 { x = -2f, y = -1.5f, z = 0f }; //this will be adjusted to the correcct spot
 
                             break;
+                        case StoreItems.Fence:
+                            GameObject fenceStoreItem = Instantiate(fenceStorePrefab, new Vector3 { x = 0f, y = 0f, z = 0f }, Quaternion.identity);
+                            fenceStoreItem.transform.SetParent(store.transform, false);
+                            fenceStoreItem.transform.localPosition = new Vector3 { x = -3.5f, y = -1.5f, z = 0f };
+                            break;
+                        case StoreItems.Food:
+                            Debug.Log("foodPrefabCreated");
+                            GameObject foodStoreItem = Instantiate(foodStorePrefab, new Vector3 { x = 0f, y = 0f, z = 0f }, Quaternion.identity);
+                            foodStoreItem.transform.SetParent(store.transform, false);
+                            foodStoreItem.transform.localPosition = new Vector3 { x = -4.5f, y = -1.5f, z = 0f };
+                            break;
+
+
                         default:
                             break;
                     }

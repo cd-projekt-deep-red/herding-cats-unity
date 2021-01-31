@@ -240,12 +240,31 @@ public class CatBehavior : MonoBehaviour
         }
     }
 
-    public void OnFoodDetected(GameObject food)
+    public void OnFoodDetected(Food food)
     {
-        StopCoroutine("CycleState");
-        this.state = CatBehaviorState.MovingToFood;
-        this.destination = food.transform.position;
-        StartCoroutine("EatAndCycleState");
+        if (!food.isBeingHeld)
+        {
+            if (this.state != CatBehaviorState.MovingToFood && this.state != CatBehaviorState.Eating)
+            {
+                StopCoroutine("CycleState");
+                this.state = CatBehaviorState.MovingToFood;
+                this.destination = food.transform.position;
+                StartCoroutine("EatAndCycleState");
+            }
+            else if (this.state == CatBehaviorState.Eating)
+            {
+                food.Consume();
+            }
+        }
+    }
+
+    public void OnFoodRemoved(Food food)
+    {
+        if (this.state == CatBehaviorState.MovingToFood || this.state == CatBehaviorState.Eating)
+        {
+            StopCoroutine("EatAndCycleState");
+            StartCoroutine("CycleState");
+        }
     }
 }
 
