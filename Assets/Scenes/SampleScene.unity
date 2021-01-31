@@ -1572,7 +1572,7 @@ MonoBehaviour:
     type: 3}
   catWrapper: {fileID: 152933512}
   boundsColliderObject: {fileID: 1562225755}
-  spawnAmount: 100
+  spawnAmount: 25
 --- !u!4 &946684350
 Transform:
   m_ObjectHideFlags: 0
@@ -1612,14 +1612,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.3145328, y: 4.777362}
-      - {x: -6.581142, y: 6.8770275}
-      - {x: -20.16236, y: -1.3615599}
-      - {x: 0.20500755, y: -11.112082}
-      - {x: 12.981735, y: -2.4142237}
-      - {x: 8.317999, y: 0.1521883}
-      - {x: 0.41441113, y: -3.961411}
-      - {x: -8.300296, y: 0.08476049}
+    - - {x: -4.643989, y: 5.7756357}
+      - {x: -23.894299, y: 15.861479}
+      - {x: -47.13092, y: 4.9608297}
+      - {x: 1.8697338, y: -21.094805}
+      - {x: 26.874691, y: -10.424872}
+      - {x: 6.986227, y: -0.84608364}
+      - {x: -1.5832582, y: -6.623471}
+      - {x: -14.2933035, y: 0.08476049}
 --- !u!114 &983737364 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8127649562877688441, guid: a1a73f0c32bbe954fad9529ca52a37ac,
@@ -26147,7 +26147,10 @@ MonoBehaviour:
   gameState: {fileID: 11400000, guid: bcb21443b7016bc4b93d05d21a90272d, type: 2}
   boxStorePrefab: {fileID: 7116013132124650302, guid: 8c1412dec8b8cdf4c8fbfd260a9d4c91,
     type: 3}
-  fenceStorePrefab: {fileID: 0}
+  fenceStorePrefab: {fileID: 6791685920535131148, guid: 91c89306a6021274d8b1be5870844ebb,
+    type: 3}
+  foodStorePrefab: {fileID: 4176297575263022719, guid: 266914fc0c163774093e186d2b1ba099,
+    type: 3}
   store: {fileID: 1554884562}
   shopkeeperText: {fileID: 1804359795}
   shopkeeperDialog:
@@ -26177,7 +26180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1562225757}
   - component: {fileID: 1562225756}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: SceneBoundry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26337,7 +26340,7 @@ PrefabInstance:
         type: 3}
       propertyPath: highlightTile
       value: 
-      objectReference: {fileID: 11400000, guid: 10c985cc8d40e45ba9a424244b344c9c,
+      objectReference: {fileID: 11400000, guid: 373118fed5f934d4bbe0cadd92ed468d,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a73f0c32bbe954fad9529ca52a37ac, type: 3}
