@@ -6,6 +6,12 @@ public class Box : Holdable
 {
     public int size;
     private IList<CatBehavior> cats = new List<CatBehavior>();
+    private SpriteRenderer spriteRender;
+
+    public void Awake()
+    {
+        spriteRender = GetComponent<SpriteRenderer>();
+    }
 
     public override void Interact(PlayerOne player)
     {
@@ -33,6 +39,11 @@ public class Box : Holdable
             catSpriteRenderer.sortingOrder = this.GetComponent<SpriteRenderer>().sortingOrder + 1;
             this.cats.Add(cat);
         }
+    }
+
+    public void Update()
+    {
+        spriteRender.sortingOrder = (int)(-1 * transform.position.y + 150f);
     }
 
     public override bool IsInteractable(PlayerOne player)

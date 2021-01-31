@@ -9,7 +9,7 @@ public class Fence : Holdable
     // Start is called before the first frame update
     void Awake()
     {
-        spriteRender = this.GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
