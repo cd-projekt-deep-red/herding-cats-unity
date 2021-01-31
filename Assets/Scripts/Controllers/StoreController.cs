@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class StoreController : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class StoreController : MonoBehaviour
     [SerializeField] private UIScript uiScript;
     [SerializeField] private GoalUI goalUIScript;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField]private AudioSource mainCameraSFXSource;
+    [SerializeField]private AudioSource shopMusicSource;
 
     private bool newitems = true;
     private bool newItemsChatUpdate = true;
@@ -26,10 +29,6 @@ public class StoreController : MonoBehaviour
     {
         //items store to start
         storeLevel.Add(StoreItems.Box, 1);
-
-
-
-
     }
 
     // Update is called once per frame
@@ -37,7 +36,7 @@ public class StoreController : MonoBehaviour
     {
         if (!spriteRenderer.isVisible)
         {
-            
+
             if(newitems == true)
             {
                 newitems = false;
@@ -56,7 +55,7 @@ public class StoreController : MonoBehaviour
                             break;
                     }
                 }
-               
+
             }
 
         }
@@ -76,11 +75,18 @@ public class StoreController : MonoBehaviour
         }
 
         goalUIScript.ToggleGoalDisplay(true);
+        // Fade in Music
+        shopMusicSource.volume = 0f;
+        shopMusicSource.Play();
+        shopMusicSource.DOFade(1f, 1f);
+        mainCameraSFXSource.DOFade(0.25f, 1f);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         goalUIScript.ToggleGoalDisplay(false);
+        shopMusicSource.DOFade(0f, 1f);
+        mainCameraSFXSource.DOFade(0.75f, 1f);
     }
 
     public void itemPurchased(float cost)
