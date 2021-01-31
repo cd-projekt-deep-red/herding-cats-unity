@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerOne : MonoBehaviour
 {
@@ -26,7 +28,18 @@ public class PlayerOne : MonoBehaviour
 
     private Vector3Int previousTile;
 
-    // Update is called once per frame
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        DisableMovement();
+        StartCoroutine("EnableMovment");
+    }
+
     void FixedUpdate()
     {
         //Store the current horizontal input in the float moveHorizontal.
@@ -205,6 +218,17 @@ public class PlayerOne : MonoBehaviour
         //place tile
 
         fenceTilemap.SetTile(cellCoordinate, fenceTiles);
+    }
+
+    public void DisableMovement()
+    {
+        rigidbody.bodyType = RigidbodyType2D.Static;
+    }
+
+    IEnumerator EnableMovment()
+    {
+        yield return new WaitForSeconds(3.5f);
+        rigidbody.bodyType = RigidbodyType2D.Dynamic;
     }
 
     public enum HorzMovementDirection {

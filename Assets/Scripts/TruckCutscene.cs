@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TruckCutscene : MonoBehaviour
 {
@@ -10,6 +11,16 @@ public class TruckCutscene : MonoBehaviour
     [SerializeField]private AudioSource audioSource;
     [SerializeField]private AudioClip audioClip;
     [SerializeField]private GameObject player;
+    [SerializeField] private Animator animator;
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        animator.SetBool("Trigger Cutscene", true);
+    }
 
     public void SetMaskSprite(int spriteIndex)
     {
