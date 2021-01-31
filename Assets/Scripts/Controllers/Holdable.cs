@@ -18,7 +18,9 @@ public abstract class Holdable : Interactable
             Collider2D[] terrainCollider = GetComponentsInChildren<Collider2D>();
             foreach (Collider2D collider in terrainCollider)
             {
-                    collider.enabled = false;
+                
+                if (collider.gameObject.name != "Cat(Clone)") { collider.enabled = false; }
+                    
             }
 
 
