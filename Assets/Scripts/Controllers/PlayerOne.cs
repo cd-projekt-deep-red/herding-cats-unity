@@ -158,7 +158,7 @@ public class PlayerOne : MonoBehaviour
             heldObject.GetComponent<BoxCollider2D>().size = originalCatColiderSize;
             heldObject.GetComponent<BoxCollider2D>().offset = Vector3.zero;
         }
-        if (false)//if the held object is a fence
+        if (heldObject.GetComponent<Fence>() != null)//if the held object is a fence
         {
 
             //calculate the tile we want to place on 
@@ -166,7 +166,7 @@ public class PlayerOne : MonoBehaviour
 
             Vector3Int cellCoordinate = tilemap.WorldToCell(footposition);
             //place tile
-
+            
             tilemap.SetTile(cellCoordinate, fenceTiles);
 
         }

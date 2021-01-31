@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Fence : Holdable
 {
+
+    private SpriteRenderer spriteRender;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        spriteRender = this.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -19,11 +21,12 @@ public class Fence : Holdable
 
     public override void OnPickUp()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void OnPutDown()
     {
-        throw new System.NotImplementedException();
+        spriteRender.enabled = false;
+        
     }
 }
