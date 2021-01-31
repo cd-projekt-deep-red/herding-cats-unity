@@ -250,6 +250,15 @@ public class CatBehavior : MonoBehaviour
             StartCoroutine("EatAndCycleState");
         }
     }
+
+    public void OnFoodRemoved(Food food)
+    {
+        if (this.state == CatBehaviorState.MovingToFood || this.state == CatBehaviorState.Eating)
+        {
+            StopCoroutine("EatAndCycleState");
+            StartCoroutine("CycleState");
+        }
+    }
 }
 
 public enum CatBehaviorState

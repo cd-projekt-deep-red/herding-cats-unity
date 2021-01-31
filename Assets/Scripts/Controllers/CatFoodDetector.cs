@@ -18,4 +18,14 @@ public class CatFoodDetector : MonoBehaviour
         }
         this.cat.OnFoodDetected(food);
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        var food = collision.gameObject.GetComponent<Food>();
+        if (food == null)
+        {
+            throw new InvalidOperationException("Found object without Food script.");
+        }
+        this.cat.OnFoodRemoved(food);
+    }
 }
