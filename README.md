@@ -1,6 +1,6 @@
 # herding-cats-unity
 
-[**Play the game!**](https://cd-projekt-deep-red.github.io/herding-cats-webgl/)
+[**Play the game in your browser!**](https://cd-projekt-deep-red.github.io/herding-cats-webgl/)
 
 ## Build
 Requires Unity 2019.4.14f1.
