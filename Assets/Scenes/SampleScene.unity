@@ -1627,7 +1627,7 @@ MonoBehaviour:
     type: 3}
   catWrapper: {fileID: 152933512}
   boundsColliderObject: {fileID: 1562225755}
-  spawnAmount: 75
+  spawnAmount: 100
 --- !u!4 &946684350
 Transform:
   m_ObjectHideFlags: 0
@@ -22003,6 +22003,7 @@ MonoBehaviour:
   goalScript: {fileID: 1355906372}
   cameraSFX: {fileID: 519420034}
   droneSting: {fileID: 8300000, guid: 2b935c7ee962c4052b8f17a50705fd45, type: 3}
+  catSpawner: {fileID: 946684349}
 --- !u!1 &1453944990
 GameObject:
   m_ObjectHideFlags: 0
@@ -22880,7 +22881,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

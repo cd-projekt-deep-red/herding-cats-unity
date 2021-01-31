@@ -40,7 +40,7 @@ public class CatSpawner : MonoBehaviour
     }
 
 
-    private void SpawnCatsRandom(int howManyCats)
+    public void SpawnCatsRandom(int howManyCats)
     {
         Bounds bounds = spawnArea.bounds;
         Vector2 center = bounds.center;

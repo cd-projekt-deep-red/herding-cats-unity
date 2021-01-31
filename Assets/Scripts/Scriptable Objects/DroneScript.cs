@@ -11,6 +11,7 @@ public class DroneScript : MonoBehaviour
     [SerializeField] private GoalDetector goalScript;
     [SerializeField] private AudioSource cameraSFX;
     [SerializeField] private AudioClip droneSting;
+    [SerializeField] private CatSpawner catSpawner;
 
 
     private float timeToCycle = 0f;
@@ -53,6 +54,9 @@ public class DroneScript : MonoBehaviour
     {
         if (goalScript.catsInGoal.Count != 0)
         {
+            // Ask the spawner to add new cats
+            catSpawner.SpawnCatsRandom(goalScript.catsInGoal.Count);
+
             int catsevacuated = 0;
 
             gameState.catsEvacuated(goalScript.catsInGoal);
