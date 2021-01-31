@@ -65,7 +65,7 @@ public class StoreController : MonoBehaviour
                             fenceStoreItem.transform.localPosition = new Vector3 { x = -2.875f, y = -1.75f, z = 0f };
                             break;
                         case StoreItems.Food:
-                            Debug.Log("foodPrefabCreated");
+                            
                             GameObject foodStoreItem = Instantiate(foodStorePrefab, new Vector3 { x = 0f, y = 0f, z = 0f }, Quaternion.identity);
                             foodStoreItem.transform.SetParent(store.transform, false);
                             foodStoreItem.transform.localPosition = new Vector3 { x = -3.875f, y = -2.375f, z = 0f };

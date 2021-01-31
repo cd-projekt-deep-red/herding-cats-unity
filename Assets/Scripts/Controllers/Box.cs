@@ -44,10 +44,13 @@ public class Box : Holdable
 
     public override void OnPickUp()
     {
+      
+
     }
 
     public override void OnPutDown()
     {
+       
     }
 
     private bool IsFull()

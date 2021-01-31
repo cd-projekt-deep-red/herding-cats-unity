@@ -1,4 +1,6 @@
-﻿public abstract class Holdable : Interactable
+﻿using UnityEngine;
+
+public abstract class Holdable : Interactable
 {
     public bool isBeingHeld = false;
 
@@ -11,12 +13,29 @@
         if (player.heldObject == null)
         {
             OnPickUp();
+            //turn off all colliders
+
+            Collider2D[] terrainCollider = GetComponentsInChildren<Collider2D>();
+            foreach (Collider2D collider in terrainCollider)
+            {
+                    collider.enabled = false;
+            }
+
+
             player.PickUp(this);
             this.isBeingHeld = true;
         }
         else if (player.heldObject == this)
         {
             OnPutDown();
+
+            Collider2D[] terrainCollider = GetComponentsInChildren<Collider2D>();
+            foreach (Collider2D collider in terrainCollider)
+            {
+                collider.enabled = true;
+            }
+
+
             player.PutDownHeldObject();
             this.isBeingHeld = false;
         }
