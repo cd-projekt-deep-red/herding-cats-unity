@@ -3,7 +3,16 @@ guid: 1a0776ed918533d4cb7170ac0982a459
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - spriteRenderer: {instanceID: 0}
+  - rigidbody: {instanceID: 0}
+  - characterAnimator: {instanceID: 0}
+  - footprintPrefab: {instanceID: 0}
+  - goalGO: {instanceID: 0}
+  - tilemap: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - fenceTiles: {fileID: 11400000, guid: 4a250f739f6ba444c9267f13e83f3cca, type: 2}
+  - heldObject: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

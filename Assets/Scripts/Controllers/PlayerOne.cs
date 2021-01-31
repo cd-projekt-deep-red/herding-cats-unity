@@ -11,16 +11,20 @@ public class PlayerOne : MonoBehaviour
     [SerializeField] private GameObject footprintPrefab;
     [SerializeField] private HorzMovementDirection playerHorzDirection;
     [SerializeField] private GameObject goalGO;
-    [SerializeField] private Tilemap tilemap;
+    [SerializeField] private Tilemap fenceTilemap;
+    [SerializeField] private Tilemap groundTilemap;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] grassSteps;
     [SerializeField] private RuleTile fenceTiles;
+    [SerializeField] private Tile highlightTile;
 
     public Holdable heldObject;
     public float playerSpeed = 0f;
     public bool isCrouching = false;
     [Range(-1, 1)] private float lastPlayerMovement;
     public float timestill = 0f;
+
+    private Vector3Int previousTile;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -45,9 +49,19 @@ public class PlayerOne : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (heldObject != null && heldObject.GetComponent<Fence>() != null)
         {
-            placeFenceRuleTile();
+            //calculate the tile we want to place on 
+            Vector3 footposition = this.transform.position - new Vector3 { x = 0f, y = -.65f, z = 0f };
+
+            Vector3Int cellCoordinate = groundTilemap.WorldToCell(footposition);
+            //place tile
+            if(previousTile != cellCoordinate)
+            {
+                groundTilemap.SetTile(previousTile, null);
+            }
+            groundTilemap.SetTile(cellCoordinate, highlightTile);
+            previousTile = cellCoordinate;
         }
     }
 
@@ -164,11 +178,11 @@ public class PlayerOne : MonoBehaviour
             //calculate the tile we want to place on 
             Vector3 footposition = this.transform.position - new Vector3 { x = 0f, y = -.65f, z = 0f};
 
-            Vector3Int cellCoordinate = tilemap.WorldToCell(footposition);
+            Vector3Int cellCoordinate = fenceTilemap.WorldToCell(footposition);
             //place tile
             
-            tilemap.SetTile(cellCoordinate, fenceTiles);
-
+            fenceTilemap.SetTile(cellCoordinate, fenceTiles);
+            groundTilemap.SetTile(previousTile, null);
         }
         this.heldObject.transform.localPosition = Vector3.up * -0.25f;
         this.heldObject.transform.SetParent(null);
@@ -187,10 +201,10 @@ public class PlayerOne : MonoBehaviour
         //calculate the tile we want to place on 
         Vector3 footposition = this.transform.position - new Vector3 { x = 0f, y = -.65f, z = 0f };
 
-        Vector3Int cellCoordinate = tilemap.WorldToCell(footposition);
+        Vector3Int cellCoordinate = fenceTilemap.WorldToCell(footposition);
         //place tile
 
-        tilemap.SetTile(cellCoordinate, fenceTiles);
+        fenceTilemap.SetTile(cellCoordinate, fenceTiles);
     }
 
     public enum HorzMovementDirection {

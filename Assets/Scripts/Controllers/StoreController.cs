@@ -30,6 +30,7 @@ public class StoreController : MonoBehaviour
     {
         //items store to start
         storeLevel.Add(StoreItems.Box, 1);
+        storeLevel.Add(StoreItems.Fence, 1);
 
 
 
