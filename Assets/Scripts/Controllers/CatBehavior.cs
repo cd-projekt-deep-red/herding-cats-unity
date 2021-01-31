@@ -29,7 +29,8 @@ public class CatBehavior : MonoBehaviour
     [SerializeField]private AudioClip[] happyMeow;
     private SpriteRenderer spriteRenderer;
     private float dustSpawned = 0f;
-    private Vector3 previousPosition;
+    private Vector2 previousPosition;
+    private Vector2 velocity;
 
     void Start()
     {
@@ -42,6 +43,7 @@ public class CatBehavior : MonoBehaviour
     void FixedUpdate()
     {
         var currentPosition = (Vector2)this.transform.position;
+        this.velocity = currentPosition - previousPosition;
         if (this.state == CatBehaviorState.Moving || this.state == CatBehaviorState.MovingToFood)
         {
             // https://forum.unity.com/threads/rigidbody-moveposition-doesnt-stop-moving-even-after-reaching-destination.544552/#post-3591916
@@ -97,16 +99,15 @@ public class CatBehavior : MonoBehaviour
             {
               dustSpawned = Random.Range(dustSpawnDelay - dustSpawnVariance, dustSpawnDelay + dustSpawnVariance);
               // Spawn dust
-              Vector3 dustLocation = this.gameObject.transform.position + new Vector3(0.0f, -.375f, 0f);
-              Vector3 fakeVelocity = this.gameObject.transform.position - previousPosition;
+              Vector2 dustLocation = currentPosition + new Vector2(0.0f, -.375f);
               GameObject dustParticle = Instantiate(dustPrefab, dustLocation, Quaternion.identity);
-              if(fakeVelocity.x <= 0) {
-                dustParticle.transform.localScale = new Vector3(-1f, 1f, 1f);
-                emoteTransform.localPosition = new Vector3(-0.275f, 0.5f, 0f);
+              if(this.velocity.x <= 0) {
+                dustParticle.transform.localScale = new Vector2(-1f, 1f);
+                emoteTransform.localPosition = new Vector2(-0.275f, 0.5f);
               }
               else
               {
-                emoteTransform.localPosition = new Vector3(0.275f, 0.5f, 0f);
+                emoteTransform.localPosition = new Vector2(0.275f, 0.5f);
               }
             }
             else
@@ -121,7 +122,7 @@ public class CatBehavior : MonoBehaviour
         }
 
 
-        spriteRenderer.sortingOrder = (int)(-1 * transform.position.y + 150f);
+        spriteRenderer.sortingOrder = (int)(-1 * currentPosition.y + 150f);
 
         previousPosition = currentPosition;
     }
@@ -133,7 +134,7 @@ public class CatBehavior : MonoBehaviour
             case CatBehaviorState.Moving:
             case CatBehaviorState.WalkAway:
             case CatBehaviorState.RunAway:
-                if (this.rigidBody.velocity.x > 0)
+                if (this.velocity.x > 0)
                 {
                     this.animator.SetBool("MoveRight", true);
                     this.animator.SetBool("MoveLeft", false);
@@ -185,6 +186,11 @@ public class CatBehavior : MonoBehaviour
         {
             this.emoter.SetBool("Suprise", false);
         }
+    }
+
+    public void ClearEmotes()
+    {
+        this.emoter.SetBool("Suprise", false);
     }
 
     private IEnumerator CycleState()
