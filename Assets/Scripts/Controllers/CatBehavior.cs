@@ -187,6 +187,11 @@ public class CatBehavior : MonoBehaviour
         }
     }
 
+    public void ClearEmotes()
+    {
+        this.emoter.SetBool("Suprise", false);
+    }
+
     private IEnumerator CycleState()
     {
         while (true)

@@ -19,6 +19,7 @@ public class CatInteraction : Holdable
         this.animator.SetBool("MoveLeft", false);
         this.animator.SetBool("Sit", true);
         this.catBehavior.enabled = false;
+        this.catBehavior.ClearEmotes();
         this.rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
     }
 
