@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerOne : MonoBehaviour
 {
@@ -10,8 +11,10 @@ public class PlayerOne : MonoBehaviour
     [SerializeField] private GameObject footprintPrefab;
     [SerializeField] private HorzMovementDirection playerHorzDirection;
     [SerializeField] private GameObject goalGO;
+    [SerializeField] private Tilemap tilemap;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] grassSteps;
+    [SerializeField] private RuleTile fenceTiles;
 
     public Holdable heldObject;
     public float playerSpeed = 0f;
@@ -40,7 +43,13 @@ public class PlayerOne : MonoBehaviour
 
     }
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            placeFenceRuleTile();
+        }
+    }
 
     private void LateUpdate()
     {
@@ -149,6 +158,18 @@ public class PlayerOne : MonoBehaviour
             heldObject.GetComponent<BoxCollider2D>().size = originalCatColiderSize;
             heldObject.GetComponent<BoxCollider2D>().offset = Vector3.zero;
         }
+        if (false)//if the held object is a fence
+        {
+
+            //calculate the tile we want to place on 
+            Vector3 footposition = this.transform.position - new Vector3 { x = 0f, y = -.65f, z = 0f};
+
+            Vector3Int cellCoordinate = tilemap.WorldToCell(footposition);
+            //place tile
+
+            tilemap.SetTile(cellCoordinate, fenceTiles);
+
+        }
         this.heldObject.transform.localPosition = Vector3.up * -0.25f;
         this.heldObject.transform.SetParent(null);
         this.heldObject = null;
@@ -159,6 +180,17 @@ public class PlayerOne : MonoBehaviour
       // audioSource.pitch = Random.Range(0.5f, 1.25f);
       // audioSource.volume = Random.Range(0.25f, 0.375f);
       // audioSource.PlayOneShot(grassSteps[Random.Range(0, grassSteps.Length)]);
+    }
+
+    public void placeFenceRuleTile()
+    {
+        //calculate the tile we want to place on 
+        Vector3 footposition = this.transform.position - new Vector3 { x = 0f, y = -.65f, z = 0f };
+
+        Vector3Int cellCoordinate = tilemap.WorldToCell(footposition);
+        //place tile
+
+        tilemap.SetTile(cellCoordinate, fenceTiles);
     }
 
     public enum HorzMovementDirection {
