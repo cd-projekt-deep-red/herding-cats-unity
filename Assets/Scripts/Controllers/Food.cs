@@ -14,6 +14,12 @@ public class Food : Holdable
         this.spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+   
+
+    private void Update()
+    {
+        spriteRenderer.sortingOrder = (int)(-1 * transform.position.y + 151f);
+    }
     public override void OnPickUp()
     {
         this.collider.enabled = false;
