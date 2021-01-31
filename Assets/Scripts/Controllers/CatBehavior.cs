@@ -71,7 +71,7 @@ public class CatBehavior : MonoBehaviour
             this.fondness -= .01f;
             Vector2 newPosition = Vector2.MoveTowards(currentPosition, currentPosition * 2 - this.antiDestination, Time.fixedDeltaTime * speed);
             this.rigidBody.MovePosition(newPosition);
-            if ((currentPosition - this.antiDestination).magnitude > 2)
+            if ((currentPosition - this.antiDestination).magnitude > 2 || this.velocity.magnitude == 0)
             {
                 StartCoroutine("CycleState");
             }
@@ -115,7 +115,7 @@ public class CatBehavior : MonoBehaviour
                 dustSpawned = dustSpawned - Time.fixedDeltaTime;
             }
 
-            if ((currentPosition - this.antiDestination).magnitude > 5)
+            if ((currentPosition - this.antiDestination).magnitude > 5 || this.velocity.magnitude == 0)
             {
                 StartCoroutine("CycleState");
             }
