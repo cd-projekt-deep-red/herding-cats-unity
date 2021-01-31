@@ -1,6 +1,6 @@
 # Herding Cats
 
-https://globalgamejam.org/2021/games/herding-cats-0
+[Global Game Jam 2021 project site](https://globalgamejam.org/2021/games/herding-cats-0)
 
 In this zany game you well... Herd Cats! After a cat delivery man crashes on the highway you must scramble to wrangle your lost cats as they sprint away from you! Play is straightforward and simple but surprisingly addictive!
 
