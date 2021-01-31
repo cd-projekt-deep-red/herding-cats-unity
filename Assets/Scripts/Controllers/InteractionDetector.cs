@@ -19,7 +19,7 @@ public class InteractionDetector : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (this.closestInteractable == null)
+            if (this.closestInteractable == null && this.player.heldObject != null)
             {
                 this.player.heldObject.Interact(this.player);
             }
