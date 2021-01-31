@@ -377,6 +377,7 @@ MonoBehaviour:
   dustPrefab: {fileID: 1486585070367029167, guid: 165a8a5346b4d40ebbf398960a1beedd,
     type: 3}
   dustSpawnDelay: 0.5
+  emoteTransform: {fileID: 3545806346190319511}
 --- !u!50 &5565994771745818800
 Rigidbody2D:
   serializedVersion: 4

@@ -21,6 +21,7 @@ public class CatBehavior : MonoBehaviour
     [SerializeField]private Animator emoter;
     [SerializeField]private GameObject dustPrefab;
     [SerializeField]private float dustSpawnDelay = 0.05f;
+    [SerializeField]private RectTransform emoteTransform;
     private SpriteRenderer spriteRenderer;
     private float dustSpawned = 0f;
     private Vector3 previousPosition;
@@ -76,6 +77,11 @@ public class CatBehavior : MonoBehaviour
               GameObject dustParticle = Instantiate(dustPrefab, dustLocation, Quaternion.identity);
               if(fakeVelocity.x <= 0) {
                 dustParticle.transform.localScale = new Vector3(-1f, 1f, 1f);
+                emoteTransform.localPosition = new Vector3(-0.275f, 0.5f, 0f);
+              }
+              else
+              {
+                emoteTransform.localPosition = new Vector3(0.275f, 0.5f, 0f);
               }
             }
             else
