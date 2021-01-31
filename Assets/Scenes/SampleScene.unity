@@ -25016,7 +25016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a5505a9725544578cc9c2e8d4b3786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droneCycleTime: 10
+  droneCycleTime: 300
   UIScript: {fileID: 1354315298}
   droneAnimator: {fileID: 1418701155}
   gameState: {fileID: 11400000, guid: bcb21443b7016bc4b93d05d21a90272d, type: 2}
