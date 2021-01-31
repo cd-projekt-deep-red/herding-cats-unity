@@ -12,6 +12,9 @@ public class UIScript : MonoBehaviour
     [SerializeField] private GameState gameState;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] moneyAdd;
+    [SerializeField] private AudioClip[] UIMusic;
+
+    public bool isIntroMusic = true;
 
     private float playerCash = 0f;
 
@@ -57,5 +60,25 @@ public class UIScript : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         paypurrAnimation.ResetTrigger("Count Change");
+    }
+
+    void Update()
+    {
+      if(isIntroMusic)
+      {
+        isIntroMusic = false;
+        audioSource.clip = UIMusic[0];
+        audioSource.Play();
+        StartCoroutine(PlayOutOfLoop());
+      }
+
+    }
+
+    IEnumerator PlayOutOfLoop()
+    {
+      yield return new WaitForSeconds(audioSource.clip.length);
+      audioSource.clip = UIMusic[1];
+      audioSource.Play();
+      StartCoroutine(PlayOutOfLoop());
     }
 }

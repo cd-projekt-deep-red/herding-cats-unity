@@ -23,6 +23,8 @@ public class StoreController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField]private AudioSource mainCameraSFXSource;
     [SerializeField]private AudioSource shopMusicSource;
+    [SerializeField]private AudioSource UIMusicSource;
+    [SerializeField]private UIScript UIScript;
 
     private bool newitems = true;
     private bool newItemsChatUpdate = true;
@@ -33,10 +35,6 @@ public class StoreController : MonoBehaviour
         storeLevel.Add(StoreItems.Box, 1);
         storeLevel.Add(StoreItems.Fence, 1);
         storeLevel.Add(StoreItems.Food, 1);
-
-
-
-
     }
 
     // Update is called once per frame
@@ -65,7 +63,7 @@ public class StoreController : MonoBehaviour
                             fenceStoreItem.transform.localPosition = new Vector3 { x = -2.875f, y = -1.75f, z = 0f };
                             break;
                         case StoreItems.Food:
-                            
+
                             GameObject foodStoreItem = Instantiate(foodStorePrefab, new Vector3 { x = 0f, y = 0f, z = 0f }, Quaternion.identity);
                             foodStoreItem.transform.SetParent(store.transform, false);
                             foodStoreItem.transform.localPosition = new Vector3 { x = -3.875f, y = -2.375f, z = 0f };
@@ -101,6 +99,7 @@ public class StoreController : MonoBehaviour
         shopMusicSource.Play();
         shopMusicSource.DOFade(1f, 1f);
         mainCameraSFXSource.DOFade(0.25f, 1f);
+        UIMusicSource.DOFade(0f, 1f);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -108,6 +107,8 @@ public class StoreController : MonoBehaviour
         goalUIScript.ToggleGoalDisplay(false);
         shopMusicSource.DOFade(0f, 1f);
         mainCameraSFXSource.DOFade(0.75f, 1f);
+        UIScript.isIntroMusic = true;
+        UIMusicSource.DOFade(.625f, 1f);
     }
 
     public void itemPurchased(float cost)

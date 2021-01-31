@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DroneScript : MonoBehaviour
 {
-    public float droneCycleTime = 60.0f;
+    public float droneCycleTime = 90.0f;
     [SerializeField]public UIScript UIScript;
     [SerializeField]private Animator droneAnimator;
     public GameState gameState;
@@ -14,7 +14,7 @@ public class DroneScript : MonoBehaviour
     [SerializeField] private CatSpawner catSpawner;
 
 
-    private float timeToCycle = 0f;
+    [SerializeField]private float timeToCycle = 45.0f;
 
 
     public void SetAnimationTrigger(bool triggerState, bool catsPresent)

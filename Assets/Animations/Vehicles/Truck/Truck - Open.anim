@@ -2636,7 +2636,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 3.9666667
+  - time: 3.5
     functionName: SetPlayerPosition
     data: 
     objectReferenceParameter: {fileID: 0}

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -25167,6 +25167,10 @@ MonoBehaviour:
   moneyAdd:
   - {fileID: 8300000, guid: a3e0165eb510f4469ba4bf762e02f9a0, type: 3}
   - {fileID: 8300000, guid: 532ab2f6a45e748da9e12d14b978930d, type: 3}
+  UIMusic:
+  - {fileID: 8300000, guid: 94cee6789d31b4d21a0ed5738ced3630, type: 3}
+  - {fileID: 8300000, guid: 56d03c9b388284df0a218b54ef7db7fa, type: 3}
+  isIntroMusic: 1
 --- !u!82 &1354315299
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25179,7 +25183,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.625
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -25587,7 +25591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a5505a9725544578cc9c2e8d4b3786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droneCycleTime: 60
+  droneCycleTime: 90
   UIScript: {fileID: 1354315298}
   droneAnimator: {fileID: 1418701155}
   gameState: {fileID: 11400000, guid: bcb21443b7016bc4b93d05d21a90272d, type: 2}
@@ -25595,6 +25599,7 @@ MonoBehaviour:
   cameraSFX: {fileID: 519420034}
   droneSting: {fileID: 8300000, guid: 2b935c7ee962c4052b8f17a50705fd45, type: 3}
   catSpawner: {fileID: 946684349}
+  timeToCycle: 0
 --- !u!1 &1428503991
 GameObject:
   m_ObjectHideFlags: 0
@@ -26857,6 +26862,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1554884564}
   mainCameraSFXSource: {fileID: 519420034}
   shopMusicSource: {fileID: 1554884565}
+  UIMusicSource: {fileID: 1354315299}
+  UIScript: {fileID: 1354315298}
 --- !u!1 &1562225755
 GameObject:
   m_ObjectHideFlags: 0
