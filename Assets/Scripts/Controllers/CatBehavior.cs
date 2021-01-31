@@ -23,7 +23,7 @@ public class CatBehavior : MonoBehaviour
     [SerializeField]private float dustSpawnDelay = 0.05f;
     private SpriteRenderer spriteRenderer;
     private float dustSpawned = 0f;
-    private Vector3 previousPosition;
+    private Vector2 previousPosition;
 
     void Start()
     {
@@ -35,12 +35,13 @@ public class CatBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
+        var currentPosition = (Vector2)this.transform.position;
         if (this.state == CatBehaviorState.Moving || this.state == CatBehaviorState.MovingToFood)
         {
             // https://forum.unity.com/threads/rigidbody-moveposition-doesnt-stop-moving-even-after-reaching-destination.544552/#post-3591916
-            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, this.destination, Time.fixedDeltaTime * speed);
+            Vector2 newPosition = Vector2.MoveTowards(currentPosition, this.destination, Time.fixedDeltaTime * speed);
             this.rigidBody.MovePosition(newPosition);
-            if (((Vector2)this.transform.position - this.destination).magnitude < 0.5f)
+            if ((currentPosition - this.destination).magnitude < 0.5f)
             {
                 if (this.state == CatBehaviorState.Moving)
                 {
@@ -54,9 +55,9 @@ public class CatBehavior : MonoBehaviour
         else if (this.state == CatBehaviorState.WalkAway)
         {
             this.fondness -= .01f;
-            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2)this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * speed);
+            Vector2 newPosition = Vector2.MoveTowards(currentPosition, currentPosition * 2 - this.antiDestination, Time.fixedDeltaTime * speed);
             this.rigidBody.MovePosition(newPosition);
-            if (((Vector2)this.transform.position - this.antiDestination).magnitude > 2)
+            if ((currentPosition - this.antiDestination).magnitude > 2)
             {
                 StartCoroutine("CycleState");
             }
@@ -64,26 +65,28 @@ public class CatBehavior : MonoBehaviour
         else if (this.state == CatBehaviorState.RunAway)
         {
             this.fondness -= .05f;
-            Vector3 newPosition = Vector3.MoveTowards(this.transform.position, (Vector2)this.transform.position * 2 - this.antiDestination, Time.fixedDeltaTime * speed * 3);
+            var runDirection = (currentPosition - this.antiDestination).normalized;
+            Vector2 newPosition = Vector2.MoveTowards(currentPosition, currentPosition + runDirection * 10, Time.fixedDeltaTime * speed * 3);
             this.rigidBody.MovePosition(newPosition);
+
             // Add dust at interval
-            if(dustSpawned <= 0.0f)
+            if (dustSpawned <= 0.0f)
             {
-              dustSpawned = dustSpawnDelay;
-              // Spawn dust
-              Vector3 dustLocation = this.gameObject.transform.position + new Vector3(0.0f, -.375f, 0f);
-              Vector2 fakeVelocity = this.gameObject.transform.position - previousPosition;
-              GameObject dustParticle = Instantiate(dustPrefab, dustLocation, Quaternion.identity);
-              if(fakeVelocity.x <= 0) {
-                dustParticle.transform.localScale = new Vector3(-1f, 1f, 1f);
-              }
+                dustSpawned = dustSpawnDelay;
+                // Spawn dust
+                Vector2 dustLocation = currentPosition + new Vector2(0.0f, -.375f);
+                Vector2 fakeVelocity = currentPosition - previousPosition;
+                GameObject dustParticle = Instantiate(dustPrefab, dustLocation, Quaternion.identity);
+                if(fakeVelocity.x <= 0) {
+                    dustParticle.transform.localScale = new Vector3(-1f, 1f, 1f);
+                }
             }
             else
             {
-              dustSpawned = dustSpawned - Time.fixedDeltaTime;
+                dustSpawned = dustSpawned - Time.fixedDeltaTime;
             }
 
-            if (((Vector2)this.transform.position - this.antiDestination).magnitude > 5)
+            if ((currentPosition - this.antiDestination).magnitude > 5)
             {
                 StartCoroutine("CycleState");
             }
@@ -92,7 +95,7 @@ public class CatBehavior : MonoBehaviour
 
         spriteRenderer.sortingOrder = (int)(-1 * transform.position.y + 150f);
 
-        previousPosition = this.gameObject.transform.position;
+        previousPosition = currentPosition;
     }
 
     private void LateUpdate()
@@ -128,6 +131,14 @@ public class CatBehavior : MonoBehaviour
                 break;
             default:
                 break;
+        }
+        if (this.state == CatBehaviorState.RunAway)
+        {
+            this.emoter.SetBool("Suprise", true);
+        }
+        else
+        {
+            this.emoter.SetBool("Suprise", false);
         }
     }
 
@@ -167,13 +178,15 @@ public class CatBehavior : MonoBehaviour
             this.state != CatBehaviorState.MovingToFood)
         {
             if (this.fondness >= -10 &&
-                (this.transform.position - player.transform.position).magnitude > 2)
+                (this.transform.position - player.transform.position).magnitude > 2 &&
+                this.state != CatBehaviorState.WalkAway &&
+                this.state != CatBehaviorState.RunAway)
             {
                 StopCoroutine("CycleState");
                 this.state = CatBehaviorState.WalkAway;
                 this.antiDestination = player.transform.position;
             }
-            else
+            else if (this.state != CatBehaviorState.RunAway)
             {
                 StopCoroutine("CycleState");
                 this.state = CatBehaviorState.RunAway;
