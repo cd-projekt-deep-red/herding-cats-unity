@@ -14,9 +14,9 @@ In Unity, build to an empty directory.
 ```
 cd <build dir>
 git init
-git remote add origin https://github.com/cd-projekt-deep-red/herding-cats-webgl.git
 git add .
 git commit
+git remote add origin https://github.com/cd-projekt-deep-red/herding-cats-webgl.git
 git pull --rebase origin master -X ours
 git push -u origin master
 ```
