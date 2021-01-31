@@ -20,7 +20,8 @@ public class CatBehavior : MonoBehaviour
     private Animator animator;
     [SerializeField]private Animator emoter;
     [SerializeField]private GameObject dustPrefab;
-    [SerializeField]private float dustSpawnDelay = 0.05f;
+    [SerializeField]private float dustSpawnDelay = 0.06f;
+    [SerializeField]private float dustSpawnVariance = 0.03f;
     [SerializeField]private RectTransform emoteTransform;
     private SpriteRenderer spriteRenderer;
     private float dustSpawned = 0f;
@@ -70,7 +71,7 @@ public class CatBehavior : MonoBehaviour
             // Add dust at interval
             if(dustSpawned <= 0.0f)
             {
-              dustSpawned = dustSpawnDelay;
+              dustSpawned = Random.Range(dustSpawnDelay - dustSpawnVariance, dustSpawnDelay + dustSpawnVariance);
               // Spawn dust
               Vector3 dustLocation = this.gameObject.transform.position + new Vector3(0.0f, -.375f, 0f);
               Vector2 fakeVelocity = this.gameObject.transform.position - previousPosition;

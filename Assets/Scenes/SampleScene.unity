@@ -1543,6 +1543,7 @@ MonoBehaviour:
     type: 3}
   catWrapper: {fileID: 152933512}
   boundsColliderObject: {fileID: 1562225755}
+  spawnAmount: 75
 --- !u!4 &946684350
 Transform:
   m_ObjectHideFlags: 0
