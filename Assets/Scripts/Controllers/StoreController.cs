@@ -95,20 +95,20 @@ public class StoreController : MonoBehaviour
 
         goalUIScript.ToggleGoalDisplay(true);
         // Fade in Music
-        shopMusicSource.volume = 0f;
-        shopMusicSource.Play();
-        shopMusicSource.DOFade(1f, 1f);
-        mainCameraSFXSource.DOFade(0.25f, 1f);
-        UIMusicSource.DOFade(0f, 1f);
+        // shopMusicSource.volume = 0f;
+        // shopMusicSource.Play();
+        // shopMusicSource.DOFade(1f, 1f);
+        // mainCameraSFXSource.DOFade(0.25f, 1f);
+        // UIMusicSource.DOFade(0f, 1f);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         goalUIScript.ToggleGoalDisplay(false);
-        shopMusicSource.DOFade(0f, 1f);
-        mainCameraSFXSource.DOFade(0.75f, 1f);
-        UIScript.isIntroMusic = true;
-        UIMusicSource.DOFade(.625f, 1f);
+        // shopMusicSource.DOFade(0f, 1f);
+        // mainCameraSFXSource.DOFade(0.75f, 1f);
+        // UIScript.isIntroMusic = true;
+        // UIMusicSource.DOFade(.625f, 1f);
     }
 
     public void itemPurchased(float cost)
