@@ -6,8 +6,6 @@ public class TruckCutscene : MonoBehaviour
 {
     [SerializeField]private SpriteMask spriteMask;
     [SerializeField]private Sprite[] maskSprites;
-    [SerializeField]private CatBreed[] catBreeds;
-    [SerializeField]private CutsceneCat[] cutsceneCats;
     [SerializeField]private GameObject catsWrapper;
     [SerializeField]private AudioSource audioSource;
     [SerializeField]private AudioClip audioClip;
@@ -16,15 +14,6 @@ public class TruckCutscene : MonoBehaviour
     public void SetMaskSprite(int spriteIndex)
     {
       spriteMask.sprite = maskSprites[spriteIndex];
-    }
-
-    public void randomizeBreeds()
-    {
-      // Randomize all cutscene cats breeds
-      for(int i=0; i < cutsceneCats.Length; i++)
-      {
-        cutsceneCats[i].breedData = catBreeds[Random.Range(0, catBreeds.Length-1)];
-      }
     }
 
     public void RemoveCutsceneObjects()
