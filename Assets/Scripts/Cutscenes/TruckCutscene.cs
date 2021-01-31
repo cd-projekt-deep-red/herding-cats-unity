@@ -9,9 +9,11 @@ public class TruckCutscene : MonoBehaviour
     [SerializeField]private Sprite[] maskSprites;
     [SerializeField]private GameObject catsWrapper;
     [SerializeField]private AudioSource audioSource;
-    [SerializeField]private AudioClip audioClip;
+    [SerializeField]private AudioClip[] audioClip;
     [SerializeField]private GameObject player;
     [SerializeField] private Animator animator;
+
+    private bool isFirstSound = true;
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -34,8 +36,18 @@ public class TruckCutscene : MonoBehaviour
 
     public void PlaySounds(float pitch)
     {
-      audioSource.pitch = pitch;
-      audioSource.PlayOneShot(audioClip);
+      if(isFirstSound)
+      {
+        audioSource.PlayOneShot(audioClip[0]);
+        isFirstSound = false;
+      }
+      else
+      {
+        audioSource.pitch = pitch;
+        audioSource.PlayOneShot(audioClip[1]);
+      }
+
+
     }
 
     public void SetPlayerPosition(int positionIndex)
