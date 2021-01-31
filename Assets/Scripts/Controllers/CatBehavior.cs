@@ -244,10 +244,17 @@ public class CatBehavior : MonoBehaviour
     {
         if (!food.isBeingHeld)
         {
-            StopCoroutine("CycleState");
-            this.state = CatBehaviorState.MovingToFood;
-            this.destination = food.transform.position;
-            StartCoroutine("EatAndCycleState");
+            if (this.state != CatBehaviorState.MovingToFood && this.state != CatBehaviorState.Eating)
+            {
+                StopCoroutine("CycleState");
+                this.state = CatBehaviorState.MovingToFood;
+                this.destination = food.transform.position;
+                StartCoroutine("EatAndCycleState");
+            }
+            else if (this.state == CatBehaviorState.Eating)
+            {
+                food.Consume();
+            }
         }
     }
 
